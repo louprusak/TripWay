@@ -21,6 +21,10 @@
 
         </activity>
 
+        <activity android:name=".view.CarnetActivity" android:parentActivityName=".view.CreateActivity">
+
+        </activity>
+
     </application>
 
 </manifest>
