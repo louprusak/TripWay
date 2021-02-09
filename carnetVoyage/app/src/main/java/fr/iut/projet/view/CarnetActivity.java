@@ -21,4 +21,14 @@ public class CarnetActivity extends AppCompatActivity {
         Intent monIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivity(monIntent);
     }
+
+    public void clicBoutonGalerie(View sender){
+        Intent monIntent=new Intent(Intent.ACTION_PICK,MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivity(monIntent); //On va devoir ajouter le for Result pour récupérer le résultat
+    }
+
+    public void clicBoutonTexte(View sender){
+        //Intent monIntent=new Intent(this, .class);
+        //startActivity(monIntent);
+    }
 }
