@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">TripWay</string>
     <string name="mes_carnets">Mes Carnets de Voyage</string>
+
+
+    <!-- BOTTOM NAVIGATION BAR -->
+    <string name="bottom_navigation_home">HOME</string>
+    <string name="bottom_navigation_carnets">CARNETS</string>
+    <string name="bottom_navigation_add">AJOUTER</string>
 </resources>
