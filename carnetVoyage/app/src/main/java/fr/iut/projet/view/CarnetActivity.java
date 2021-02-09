@@ -28,19 +28,19 @@ public class CarnetActivity extends AppCompatActivity {
         initActivity();
     }
 
+    /**
+     * méthode appelée pendant le onCreate, qui récupère les éléments graphiques et initialise les évenements.
+     */
     private void initActivity() {
         //récupération des objets graphiques
         imgPhoto=(ImageView)findViewById(R.id.imgPhoto);
         btnPhoto=(Button)findViewById(R.id.btnGalerie);
 
-        //initialisation clic galerie
+        //initialisation du clic sur le bouton galerie
         createOnClicGalerie();
     }
 
-    public void clicBoutonCamera(View sender){
-        Intent monIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivity(monIntent);
-    }
+
 
 
     /**
@@ -60,14 +60,14 @@ public class CarnetActivity extends AppCompatActivity {
      * méthode qui se déclenche après startActivityForResult
      * @param requestCode
      * @param resultCode
-     * @param data
+     * @param data : c'est l'Intent qui fait passer les données
      */
     public void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        //Vérifie si une image est récupérée
+        //Vérification si une image est récupérée
         if(requestCode==1 && resultCode==RESULT_OK){
 
-        //accès à l'image depuis l'intent
+            //Accès à l'image depuis l'intent
             Uri monImage = data.getData();
             String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
@@ -77,7 +77,7 @@ public class CarnetActivity extends AppCompatActivity {
             //Position sur la première ligne (normalement il y en a qu'une car une seule image)
             curseur.moveToFirst();
 
-            //Récupérer le chemin précis de l'image
+            //Récupération du chemin précis de l'image
             int columnIndex = curseur.getColumnIndex(filePathColumn[0]);
             String imgPath = curseur.getString(columnIndex);
             curseur.close();
@@ -87,6 +87,7 @@ public class CarnetActivity extends AppCompatActivity {
 
             //Affichage de l'image
             imgPhoto.setImageBitmap(image);
+
         }else{
             Toast.makeText(this, "Aucune image sélectionnée",Toast.LENGTH_LONG).show();
         } //FAIRE UN TRY CATCH AU CAS OU IL Y A PAS LA PERMISSION D'ACCEDER AUX PHOTOS
@@ -96,5 +97,11 @@ public class CarnetActivity extends AppCompatActivity {
     public void clicBoutonTexte(View sender){
         //Intent monIntent=new Intent(this, .class);
         //startActivity(monIntent);
+        //TO DO : Créer un nouvelle activité qui s'ouvrira ici qui contiendra une textEdit
+    }
+
+    public void clicBoutonCamera(View sender){
+        Intent monIntent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivity(monIntent);
     }
 }
