@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/home"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_home_icon"
         android:title="@string/bottom_navigation_home" />
 
     <item android:id="@+id/carnets"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_carnet_icon"
         android:title="@string/bottom_navigation_carnets" />
 
     <item android:id="@+id/add"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/ic_add_icon"
         android:title="@string/bottom_navigation_add" />
 </menu>
