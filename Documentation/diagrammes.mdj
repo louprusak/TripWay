@@ -311,7 +311,7 @@
 											"top": 110,
 											"width": 166,
 											"height": 13,
-											"text": "+pathName: String",
+											"text": "+chemin: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -434,7 +434,7 @@
 											"top": 391,
 											"width": 150,
 											"height": 13,
-											"text": "Anecdote"
+											"text": "Texte"
 										},
 										{
 											"_type": "LabelView",
@@ -506,7 +506,7 @@
 											"top": 414,
 											"width": 150,
 											"height": 13,
-											"text": "+texte: String",
+											"text": "+description: String",
 											"horizontalAlignment": 0
 										}
 									],
@@ -773,9 +773,9 @@
 										"$ref": "AAAAAAF3kq8gImfJ1R4="
 									},
 									"font": "Arial;13;0",
-									"left": 494,
+									"left": 493,
 									"top": 232,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -1044,9 +1044,9 @@
 										"$ref": "AAAAAAF3krCYy2lX+/Y="
 									},
 									"font": "Arial;13;0",
-									"left": 468,
+									"left": 467,
 									"top": 432,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
@@ -1127,6 +1127,19 @@
 							"headQualifiersCompartment": {
 								"$ref": "AAAAAAF3krCYzGlk6/s="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAF3zkxTFaGZ3eM=",
+							"_parent": {
+								"$ref": "AAAAAAFF+qBtyKM79qY="
+							},
+							"font": "Arial;13;0",
+							"left": 552,
+							"top": 96,
+							"width": 208,
+							"height": 105,
+							"text": "Classes Photo et Texte pour pouvoir modifier facilement si besoin ce qu'est une photo et un texte  (plus facilement que si c'était des attributs List<String>) \n>> maintenabilité de l'application"
 						}
 					]
 				},
@@ -3372,7 +3385,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF3kq4qLWdkWJ0="
 							},
-							"name": "pathName",
+							"name": "chemin",
 							"type": "String"
 						}
 					]
@@ -3383,7 +3396,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Anecdote",
+					"name": "Texte",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -3391,7 +3404,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF3kq5P5GeOdMk="
 							},
-							"name": "texte",
+							"name": "description",
 							"type": "String"
 						}
 					]
