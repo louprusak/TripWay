@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment;
 import fr.iut.projet.R;
 import fr.iut.projet.view.MainActivity;
 
-public class AjouterCarnet extends Fragment {
+public class Create extends Fragment {
 
     private MainActivity monActivite;
 
-    public AjouterCarnet() {
-        super(R.layout.add_carnet);
+    public Create() {
+        super(R.layout.create);
     }
 
     @Override

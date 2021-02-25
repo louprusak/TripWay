@@ -5,7 +5,7 @@
 
     <!-- BOTTOM NAVIGATION BAR -->
     <string name="bottom_navigation_home">HOME</string>
-    <string name="bottom_navigation_carnets">CARNETS</string>
-    <string name="bottom_navigation_add">AJOUTER</string>
+    <string name="bottom_navigation_logs">CARNETS</string>
+    <string name="bottom_navigation_create">AJOUTER</string>
     <string name="bottom_navigation_map">CARTE</string>
 </resources>

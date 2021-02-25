@@ -1,18 +1,18 @@
 package fr.iut.projet.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import fr.iut.projet.R;
-import fr.iut.projet.view.CreateActivity;
-import fr.iut.projet.view.fragments.AjouterCarnet;
+import fr.iut.projet.view.fragments.Create;
 import fr.iut.projet.view.fragments.Home;
+import fr.iut.projet.view.fragments.Logs;
+import fr.iut.projet.view.fragments.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,19 +25,21 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView menu = findViewById(R.id.bottom_navigation);
 
+        buttonClicOnNavHome();
+
         menu.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
-                    clicBoutonNavHome();
+                    buttonClicOnNavHome();
                     break;
-                case R.id.nav_carnets:
-                    clicBoutonNavCarnets();
+                case R.id.nav_logs:
+                    buttonClicOnNavLogs();
                     break;
-                case R.id.nav_add:
-                    clicBoutonNavAdd();
+                case R.id.nav_create:
+                    buttonClicOnNavCreate();
                     break;
                 case R.id.nav_map:
-                    clicBoutonNavMap();
+                    buttonClicOnNavMap();
                     break;
             }
             return true;
@@ -45,24 +47,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void clicBoutonNavMap() {
-    }
-
-    private void clicBoutonNavCarnets() {
+    private void buttonClicOnNavHome() {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.afficheurfragment,new AjouterCarnet(), null)
+                .replace(R.id.afficheurfragment,new Home(), null)
                 .commit();
     }
 
-    private void clicBoutonNavHome() {
+    private void buttonClicOnNavMap() {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.afficheurfragment,new Home(), null)
+                .replace(R.id.afficheurfragment,new Map(), null)
                 .commit();
     }
 
-    private void clicBoutonNavAdd(){
+    private void buttonClicOnNavLogs() {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.afficheurfragment,new AjouterCarnet(), null)
+                .replace(R.id.afficheurfragment,new Logs(), null)
+                .commit();
+    }
+
+    private void buttonClicOnNavCreate(){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.afficheurfragment,new Create(), null)
                 .commit();
     }
 

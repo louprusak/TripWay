@@ -23,10 +23,6 @@
 
         </activity>
 
-        <activity android:name=".view.AccueilActivity">
-
-        </activity>
-
         <activity android:name=".view.CarnetActivity" android:parentActivityName=".view.CreateActivity">
 
         </activity>

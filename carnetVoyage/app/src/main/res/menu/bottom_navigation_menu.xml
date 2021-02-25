@@ -8,11 +8,11 @@
         android:icon="@drawable/ic_explore_icon"
         android:title="@string/bottom_navigation_map" />
 
-    <item android:id="@+id/nav_carnets"
+    <item android:id="@+id/nav_logs"
         android:icon="@drawable/ic_carnet_icon"
-        android:title="@string/bottom_navigation_carnets" />
+        android:title="@string/bottom_navigation_logs" />
 
-    <item android:id="@+id/nav_add"
+    <item android:id="@+id/nav_create"
         android:icon="@drawable/ic_add_icon"
-        android:title="@string/bottom_navigation_add" />
+        android:title="@string/bottom_navigation_create" />
 </menu>
