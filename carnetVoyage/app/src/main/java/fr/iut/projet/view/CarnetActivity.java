@@ -32,6 +32,7 @@ public class CarnetActivity extends AppCompatActivity {
     private ImageView imgPhoto;
     private Button btnPhoto;
     private Button btnCamera;
+    private Button btnTexte;
     private String photoPath = null;
 
     @Override
@@ -49,14 +50,16 @@ public class CarnetActivity extends AppCompatActivity {
         imgPhoto=(ImageView)findViewById(R.id.imgPhoto);
         btnPhoto=(Button)findViewById(R.id.btnGalerie);
         btnCamera=(Button)findViewById(R.id.btnCamera);
+        btnTexte=(Button)findViewById(R.id.btnTexte);
 
         //initialisation du clic sur le bouton galerie
         createOnClicGalerie();
         createOnClicCamera();
+        createOnClicTexte();
     }
 
 
-
+    //RECUPERER UN PHOTO DEPUIS LA GALERIE
 
     /**
      * Evenement au clic sur le bouton galerie
@@ -113,13 +116,23 @@ public class CarnetActivity extends AppCompatActivity {
     }
 
 
-    public void clicBoutonTexte(View sender){
-        //Intent monIntent=new Intent(this, .class);
-        //startActivity(monIntent);
-        //TO DO : Créer un nouvelle activité qui s'ouvrira ici qui contiendra une textEdit (à récupérer pour afficher ici)
+    //AJOUTER DU TEXTE AU CARNET
+
+    private void createOnClicTexte(){
+        btnTexte.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicTexte();
+            }
+        });
     }
 
+    private void clicTexte(){
+        Intent monIntent=new Intent(CarnetActivity.this, AddTextActivity.class);
+        startActivity(monIntent);
+    }
 
+    //RECUPERER UNE PHOTO DEPUIS L'APPAREIL PHOTO
 
     private void createOnClicCamera(){
         btnCamera.setOnClickListener(new Button.OnClickListener() {

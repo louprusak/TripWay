@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/edit_titre_carnet"
         android:layout_width="267dp"
         android:layout_height="64dp"
         android:ems="10"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.209" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/edit_date_carnet"
         android:layout_width="267dp"
         android:layout_height="64dp"
         android:ems="10"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/edit_lieu_carnet"
         android:layout_width="267dp"
         android:layout_height="64dp"
         android:ems="10"
