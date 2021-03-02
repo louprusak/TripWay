@@ -30,6 +30,11 @@
 
         </activity>
 
+        <activity android:name=".view.AddTextActivity" android:parentActivityName=".view.AddTextActivity">
+
+        </activity>
+
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

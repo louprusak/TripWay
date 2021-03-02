@@ -10,9 +10,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -29,17 +32,41 @@ public class CarnetActivity extends AppCompatActivity {
     private static final int RETOUR_GALERIE = 1;
     private static final int RETOUR_CAMERA = 2;
 
+    //objets graphiques
     private ImageView imgPhoto;
+    private TextView maTexteView;
     private Button btnPhoto;
     private Button btnCamera;
     private Button btnTexte;
     private String photoPath = null;
+    private Bitmap image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.carnet_activity);
         initActivity();
+        Intent intentRecup=getIntent();
+        if(intentRecup!=null){
+            maTexteView.setText(intentRecup.getStringExtra(AddTextActivity.donnee));
+        }
+    }
+
+    //SAUVEGARDE LEGERE
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        //On sauvegarde la photo de l'ImageView dans le Bundle
+        outState.putParcelable("PHOTO",image);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        //On récupère le texte qui est dans le Bundle
+        super.onRestoreInstanceState(savedInstanceState);
+        image= savedInstanceState.getParcelable("PHOTO");
+        imgPhoto.setImageBitmap(image);
     }
 
     /**
@@ -51,8 +78,9 @@ public class CarnetActivity extends AppCompatActivity {
         btnPhoto=(Button)findViewById(R.id.btnGalerie);
         btnCamera=(Button)findViewById(R.id.btnCamera);
         btnTexte=(Button)findViewById(R.id.btnTexte);
+        maTexteView=(TextView)findViewById(R.id.texte_anecdote);
 
-        //initialisation du clic sur le bouton galerie
+        //initialisation des clics sur les boutons
         createOnClicGalerie();
         createOnClicCamera();
         createOnClicTexte();
@@ -101,14 +129,14 @@ public class CarnetActivity extends AppCompatActivity {
             curseur.close();
 
             //Récupération de l'image
-            Bitmap image = BitmapFactory.decodeFile(imgPath);
+            image = BitmapFactory.decodeFile(imgPath);
 
             //Affichage de l'image
             imgPhoto.setImageBitmap(image);
         }
         //INTENT DE LA CAMERA
         if(requestCode==RETOUR_CAMERA && resultCode==RESULT_OK){
-            Bitmap image = BitmapFactory.decodeFile(photoPath);
+            image = BitmapFactory.decodeFile(photoPath);
             imgPhoto.setImageBitmap(image);
 
         }
