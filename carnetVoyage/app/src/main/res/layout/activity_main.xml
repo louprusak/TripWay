@@ -7,41 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-
-    <!--Button
-        android:id="@+id/button_create_carnet"
-        android:layout_width="62dp"
-        android:layout_height="52dp"
-        android:onClick="clicBoutonCreate"
-        app:backgroundTint="@color/bleu_pastel"
-        app:icon="@android:drawable/ic_menu_add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/mes_carnets"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.211" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/button_create_carnet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" >
-
-    </androidx.recyclerview.widget.RecyclerView>-->
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/afficheurfragment"
         android:layout_width="0dp"
