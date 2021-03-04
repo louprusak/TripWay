@@ -32,6 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <TextView
+        style=""
         android:id="@+id/tv1_home"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
