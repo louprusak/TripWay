@@ -25,6 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import fr.iut.projet.R;
+import fr.iut.projet.modele.Carnet;
 
 public class CarnetActivity extends AppCompatActivity {
 
@@ -35,11 +36,15 @@ public class CarnetActivity extends AppCompatActivity {
     //objets graphiques
     private ImageView imgPhoto;
     private TextView maTexteView;
+    private TextView maTitreView;
     private Button btnPhoto;
     private Button btnCamera;
     private Button btnTexte;
     private String photoPath = null;
     private Bitmap image;
+
+    //Le carnet en cours
+    private Carnet carnet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +53,14 @@ public class CarnetActivity extends AppCompatActivity {
         initActivity();
         Intent intentRecup=getIntent();
         if(intentRecup!=null){
-            maTexteView.setText(intentRecup.getStringExtra(AddTextActivity.donnee));
+            if((intentRecup.getStringExtra(AddTextActivity.donnee))!=null) {
+                maTexteView.setText(intentRecup.getStringExtra(AddTextActivity.donnee));
+                carnet.addTexte(intentRecup.getStringExtra(AddTextActivity.donnee));
+            }
+            //On récupère le carnet (titre, date et lieu qui sont rentrés  juste avant)
+            carnet=(Carnet)intentRecup.getSerializableExtra("moncarnet");
+            maTitreView.setText(carnet.toString());
+
         }
     }
 
@@ -79,6 +91,7 @@ public class CarnetActivity extends AppCompatActivity {
         btnCamera=(Button)findViewById(R.id.btnCamera);
         btnTexte=(Button)findViewById(R.id.btnTexte);
         maTexteView=(TextView)findViewById(R.id.texte_anecdote);
+        maTitreView=(TextView)findViewById(R.id.titre_view);
 
         //initialisation des clics sur les boutons
         createOnClicGalerie();
@@ -87,7 +100,7 @@ public class CarnetActivity extends AppCompatActivity {
     }
 
 
-    //RECUPERER UN PHOTO DEPUIS LA GALERIE
+    //RECUPERER UNE PHOTO DEPUIS LA GALERIE
 
     /**
      * Evenement au clic sur le bouton galerie
@@ -129,6 +142,7 @@ public class CarnetActivity extends AppCompatActivity {
             curseur.close();
 
             //Récupération de l'image
+            carnet.addPhoto(imgPath);
             image = BitmapFactory.decodeFile(imgPath);
 
             //Affichage de l'image
@@ -136,6 +150,7 @@ public class CarnetActivity extends AppCompatActivity {
         }
         //INTENT DE LA CAMERA
         if(requestCode==RETOUR_CAMERA && resultCode==RESULT_OK){
+            carnet.addPhoto(photoPath);
             image = BitmapFactory.decodeFile(photoPath);
             imgPhoto.setImageBitmap(image);
 
