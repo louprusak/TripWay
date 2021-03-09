@@ -8,12 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +31,7 @@ public class CarnetActivity extends AppCompatActivity {
     //constantes requestCode des Intent
     private static final int RETOUR_GALERIE = 1;
     private static final int RETOUR_CAMERA = 2;
+    private static final int RETOUR_TEXTE = 3;
 
     //objets graphiques
     private ImageView imgPhoto;
@@ -53,13 +53,13 @@ public class CarnetActivity extends AppCompatActivity {
         initActivity();
         Intent intentRecup=getIntent();
         if(intentRecup!=null){
-            if((intentRecup.getStringExtra(AddTextActivity.donnee))!=null) {
-                maTexteView.setText(intentRecup.getStringExtra(AddTextActivity.donnee));
-                carnet.addTexte(intentRecup.getStringExtra(AddTextActivity.donnee));
-            }
+
             //On récupère le carnet (titre, date et lieu qui sont rentrés  juste avant)
-            carnet=(Carnet)intentRecup.getSerializableExtra("moncarnet");
-            maTitreView.setText(carnet.toString());
+
+            if((intentRecup.hasExtra("moncarnet"))) {
+                carnet = (Carnet) intentRecup.getSerializableExtra("moncarnet");
+                maTitreView.setText(carnet.toString());
+            }
 
         }
     }
@@ -124,6 +124,7 @@ public class CarnetActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode,int resultCode,Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         //INTENT DE LA GALERIE
+
         if(requestCode==RETOUR_GALERIE && resultCode==RESULT_OK) {
 
             //Accès à l'image depuis l'intent
@@ -155,6 +156,13 @@ public class CarnetActivity extends AppCompatActivity {
             imgPhoto.setImageBitmap(image);
 
         }
+        //INTENT DU TEXTE
+        if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
+            String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
+            carnet.addTexte(texte);
+            maTexteView.setText(texte);
+
+        }
 
     }
 
@@ -172,7 +180,7 @@ public class CarnetActivity extends AppCompatActivity {
 
     private void clicTexte(){
         Intent monIntent=new Intent(CarnetActivity.this, AddTextActivity.class);
-        startActivity(monIntent);
+        startActivityForResult(monIntent,RETOUR_TEXTE);
     }
 
     //RECUPERER UNE PHOTO DEPUIS L'APPAREIL PHOTO

@@ -1,16 +1,11 @@
 package fr.iut.projet.view;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,10 +13,8 @@ import fr.iut.projet.R;
 
 public class AddTextActivity extends AppCompatActivity {
 
-    //constantes requestCode des Intent
-    private static final int RETOUR_VALIDER_TEXTE = 3;
 
-    static final String donnee="madonnee";
+    static final String KEY_DONNEE ="madonnee";
 
     //objet graphique
     private Button btnValider;
@@ -76,9 +69,10 @@ public class AddTextActivity extends AppCompatActivity {
 
     private void clicValider(){
         EditText texte = (EditText) findViewById(R.id.texte_a_ajouter);
-        Intent monIntent=new Intent(AddTextActivity.this, CarnetActivity.class);
-        monIntent.putExtra(donnee,texte.getText().toString());
-        startActivity(monIntent);
+        Intent monIntent=new Intent();
+        monIntent.putExtra(KEY_DONNEE,texte.getText().toString());
+        setResult(Activity.RESULT_CANCELED, monIntent);
+        finish();
     }
 
 
