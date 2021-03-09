@@ -9,41 +9,42 @@
         android:layout_width="267dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:hint="Vacances d'hiver"
         android:inputType="textPersonName"
-        android:text="Titre du carnet"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <EditText
         android:id="@+id/edit_date_carnet"
         android:layout_width="267dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:hint="Décembre 2020"
         android:inputType="textPersonName"
-        android:text="Date du voyage"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.434" />
 
     <EditText
         android:id="@+id/edit_lieu_carnet"
         android:layout_width="267dp"
         android:layout_height="64dp"
         android:ems="10"
+        android:hint="Les Alpes"
         android:inputType="textPersonName"
-        android:text="Localisation"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.769" />
 
     <Button
         android:id="@+id/button"
