@@ -54,17 +54,17 @@ public class CarnetActivity extends AppCompatActivity {
         Intent intentRecup=getIntent();
         if(intentRecup!=null){
 
-            //On récupère le carnet (titre, date et lieu qui sont rentrés  juste avant)
-
+            //On récupère le carnet en cours (titre, date et lieu qui sont rentrés  juste avant)
             if((intentRecup.hasExtra("moncarnet"))) {
                 carnet = (Carnet) intentRecup.getSerializableExtra("moncarnet");
+                //Affichage des données du carnet
                 maTitreView.setText(carnet.toString());
             }
 
         }
     }
 
-    //SAUVEGARDE LEGERE
+    //SAUVEGARDE LEGERE - sauvegarde des données quand on tourne l'écran
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
@@ -156,7 +156,7 @@ public class CarnetActivity extends AppCompatActivity {
             imgPhoto.setImageBitmap(image);
 
         }
-        //INTENT DU TEXTE
+        //INTENT DU TEXTE (result_canceled car on retourne à l'activité où il y a le carnet, pas une nouvelle)
         if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
             String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
             carnet.addTexte(texte);

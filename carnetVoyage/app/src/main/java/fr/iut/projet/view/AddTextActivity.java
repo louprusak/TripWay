@@ -70,8 +70,8 @@ public class AddTextActivity extends AppCompatActivity {
     private void clicValider(){
         EditText texte = (EditText) findViewById(R.id.texte_a_ajouter);
         Intent monIntent=new Intent();
-        monIntent.putExtra(KEY_DONNEE,texte.getText().toString());
-        setResult(Activity.RESULT_CANCELED, monIntent);
+        monIntent.putExtra(KEY_DONNEE,texte.getText().toString()); //enregistre la donnee rentrée par l'utilisateur
+        setResult(Activity.RESULT_CANCELED, monIntent); //permet de revenir à l'activité d'où on vient (pour ne pas perdre le carnet)
         finish();
     }
 
