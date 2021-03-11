@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment;
 
 import fr.iut.projet.R;
 
-public class Map extends Fragment {
+public class LogsFragment extends Fragment {
 
-    public Map() {
-        super(R.layout.map);
+    public LogsFragment() {
+        super(R.layout.logs);
     }
 }

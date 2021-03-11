@@ -1,7 +1,6 @@
-package fr.iut.projet.modele;
+package fr.iut.projet.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GestionnaireCarnet {
     private ArrayList<Carnet> lesCarnets;

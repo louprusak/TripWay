@@ -17,4 +17,9 @@
     <string name="text3_home">L\'onglet ajouter vous permet de créer un carnet immagé sur un de vos voyages.</string>
 
 
+    <!-- GOOGLE MAPS API -->
+    <!--<string name="google_maps_key">AIzaSyA4AioFGh3tnz9udrRJNWSmo2YuAWzaTuA</string>-->
+    <string name="google_maps_key">AIzaSyB06PTfw1mtL6haDT82RGtueEhwXNbgJAE</string>
+
+
 </resources>

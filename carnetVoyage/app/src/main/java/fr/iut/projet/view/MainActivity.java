@@ -9,10 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import fr.iut.projet.R;
-import fr.iut.projet.view.fragments.Create;
-import fr.iut.projet.view.fragments.Home;
-import fr.iut.projet.view.fragments.Logs;
-import fr.iut.projet.view.fragments.Map;
+import fr.iut.projet.view.fragments.CreateFragment;
+import fr.iut.projet.view.fragments.HomeFragment;
+import fr.iut.projet.view.fragments.LogsFragment;
+import fr.iut.projet.view.fragments.MapFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,29 +45,32 @@ public class MainActivity extends AppCompatActivity {
             return true;
         });
 
+
+        /*SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
+        mapFragment.getMapAsync((OnMapReadyCallback) this);*/
     }
 
     private void buttonClicOnNavHome() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.afficheurfragment,new Home(), null)
+                .replace(R.id.afficheurfragment,new HomeFragment(), null)
                 .commit();
     }
 
     private void buttonClicOnNavMap() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.afficheurfragment,new Map(), null)
+                .replace(R.id.afficheurfragment,new MapFragment(), null)
                 .commit();
     }
 
     private void buttonClicOnNavLogs() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.afficheurfragment,new Logs(), null)
+                .replace(R.id.afficheurfragment,new LogsFragment(), null)
                 .commit();
     }
 
     private void buttonClicOnNavCreate(){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.afficheurfragment,new Create(), null)
+                .replace(R.id.afficheurfragment,new CreateFragment(), null)
                 .commit();
     }
 

@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment;
 import fr.iut.projet.R;
 import fr.iut.projet.view.MainActivity;
 
-public class Home extends Fragment {
+public class HomeFragment extends Fragment {
 
     private MainActivity monActivite;
 
-    public Home() {
+    public HomeFragment() {
         super(R.layout.home);
     }
 

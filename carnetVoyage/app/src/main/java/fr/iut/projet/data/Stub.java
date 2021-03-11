@@ -1,7 +1,7 @@
 package fr.iut.projet.data;
 
-import fr.iut.projet.modele.Carnet;
-import fr.iut.projet.modele.GestionnaireCarnet;
+import fr.iut.projet.model.Carnet;
+import fr.iut.projet.model.GestionnaireCarnet;
 
 public class Stub {
     private GestionnaireCarnet laListe=new GestionnaireCarnet();

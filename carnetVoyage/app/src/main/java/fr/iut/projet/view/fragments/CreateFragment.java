@@ -2,7 +2,6 @@ package fr.iut.projet.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,25 +12,24 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import fr.iut.projet.R;
-import fr.iut.projet.modele.Carnet;
-import fr.iut.projet.modele.GestionnaireCarnet;
+import fr.iut.projet.model.Carnet;
 import fr.iut.projet.view.CarnetActivity;
 import fr.iut.projet.view.MainActivity;
 
-public class Create extends Fragment {
+public class CreateFragment extends Fragment {
 
     private MainActivity monActivite;
 
     static final String lecarnet="moncarnet";
 
-    public Create() {
+    public CreateFragment() {
         super(R.layout.create);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        monActivite = ((MainActivity) getContext());
+        monActivite = ((MainActivity) getContext());    //A Bannir !! préferer get activité
         init(view);
     }
 

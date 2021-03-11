@@ -1,4 +1,6 @@
-package fr.iut.projet.modele;
+package fr.iut.projet.model;
+
+import com.google.android.gms.maps.model.Marker;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ public class Carnet implements Serializable {
     private String lieu;
     private ArrayList<String> listePhotos;
     private ArrayList<String> listeTextes;
+
+    private Marker markerCarnet;
 
     //CONSTRUCTEURS
 
@@ -33,6 +37,7 @@ public class Carnet implements Serializable {
     public void addTexte(String texte){
         listeTextes.add(texte);
     }
+
 
     public List<String> getListePhotos() {
         return listePhotos;

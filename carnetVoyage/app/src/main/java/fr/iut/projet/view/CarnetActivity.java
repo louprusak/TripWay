@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -24,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import fr.iut.projet.R;
-import fr.iut.projet.modele.Carnet;
+import fr.iut.projet.model.Carnet;
 
 public class CarnetActivity extends AppCompatActivity {
 
