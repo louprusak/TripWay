@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
-import fr.iut.projet.view.CarnetActivity;
-import fr.iut.projet.view.MainActivity;
+import fr.iut.projet.view.activities.CarnetActivity;
+import fr.iut.projet.view.activities.MainActivity;
 
 public class CreateFragment extends Fragment {
 

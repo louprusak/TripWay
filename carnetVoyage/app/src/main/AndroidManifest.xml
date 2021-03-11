@@ -29,7 +29,7 @@
 
         <!---->
 
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,15 +37,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.CreateActivity" android:parentActivityName=".view.MainActivity">
+        <activity android:name=".view.activities.CreateActivity" android:parentActivityName=".view.activities.MainActivity">
 
         </activity>
 
-        <activity android:name=".view.CarnetActivity" android:parentActivityName=".view.CreateActivity">
+        <activity android:name=".view.activities.CarnetActivity" android:parentActivityName=".view.activities.CreateActivity">
 
         </activity>
 
-        <activity android:name=".view.AddTextActivity" android:parentActivityName=".view.AddTextActivity">
+        <activity android:name=".view.activities.AddTextActivity" android:parentActivityName=".view.activities.AddTextActivity">
 
         </activity>
 

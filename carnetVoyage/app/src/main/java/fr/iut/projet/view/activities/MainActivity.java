@@ -1,4 +1,4 @@
-package fr.iut.projet.view;
+package fr.iut.projet.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import fr.iut.projet.R;
+import fr.iut.projet.view.activities.CreateActivity;
 import fr.iut.projet.view.fragments.CreateFragment;
 import fr.iut.projet.view.fragments.HomeFragment;
 import fr.iut.projet.view.fragments.LogsFragment;

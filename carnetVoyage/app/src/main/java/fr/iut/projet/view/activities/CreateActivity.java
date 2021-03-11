@@ -1,8 +1,7 @@
-package fr.iut.projet.view;
+package fr.iut.projet.view.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 
@@ -10,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import fr.iut.projet.R;
+import fr.iut.projet.view.activities.CarnetActivity;
 
 public class CreateActivity extends AppCompatActivity {
 

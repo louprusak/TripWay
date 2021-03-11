@@ -1,4 +1,4 @@
-package fr.iut.projet.view;
+package fr.iut.projet.view.activities;
 
 import android.content.Intent;
 import android.database.Cursor;

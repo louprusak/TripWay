@@ -15,8 +15,6 @@ public class Carnet implements Serializable {
     private ArrayList<String> listePhotos;
     private ArrayList<String> listeTextes;
 
-    private Marker markerCarnet;
-
     //CONSTRUCTEURS
 
     public Carnet(String titre, String date, String lieu) {

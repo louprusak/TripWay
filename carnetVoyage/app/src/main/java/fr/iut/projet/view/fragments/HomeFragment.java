@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import fr.iut.projet.R;
-import fr.iut.projet.view.MainActivity;
+import fr.iut.projet.view.activities.MainActivity;
 
 public class HomeFragment extends Fragment {
 

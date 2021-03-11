@@ -1,4 +1,4 @@
-package fr.iut.projet.view;
+package fr.iut.projet.view.activities;
 
 import android.app.Activity;
 import android.content.Intent;
