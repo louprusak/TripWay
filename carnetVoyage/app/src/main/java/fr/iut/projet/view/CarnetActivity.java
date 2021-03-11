@@ -146,6 +146,7 @@ public class CarnetActivity extends AppCompatActivity {
             image = BitmapFactory.decodeFile(imgPath);
 
             //Affichage de l'image
+
             imgPhoto.setImageBitmap(image);
         }
         //INTENT DE LA CAMERA
@@ -159,6 +160,8 @@ public class CarnetActivity extends AppCompatActivity {
         if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
             String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
             carnet.addTexte(texte);
+            //TextView textView = new TextView(getApplicationContext());
+            //textView.setText(texte);
             maTexteView.setText(texte);
 
         }
