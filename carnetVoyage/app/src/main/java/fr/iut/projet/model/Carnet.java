@@ -1,6 +1,6 @@
 package fr.iut.projet.model;
 
-import com.google.android.gms.maps.model.Marker;
+//import com.google.android.gms.maps.model.Marker;
 
 import java.io.Serializable;
 import java.util.ArrayList;
