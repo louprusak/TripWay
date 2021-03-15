@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TripWay</string>
+    <string name="mes_carnets">My Travel Notebook</string>
+
+
+        <!-- BOTTOM NAVIGATION BAR -->
+    <string name="bottom_navigation_home">HOME</string>
+    <string name="bottom_navigation_logs">NOTEBOOK</string>
+    <string name="bottom_navigation_create">ADD</string>
+    <string name="bottom_navigation_map">MAP</string>
+
+
+        <!-- HOME PAGE -->
+    <string name="welcome_home">Welcome !</string>
+    <string name="text1_home">The map tab allows you to see all the trips tou have already done on a map.</string>
+    <string name="text2_home">The notebook tab allows you to see the list of all your notebooks.</string>
+    <string name="text3_home">The add tab allows you to create a new travel notebook.</string>
+
+
+        <!-- GOOGLE MAPS API -->
+        <!--<string name="google_maps_key">AIzaSyA4AioFGh3tnz9udrRJNWSmo2YuAWzaTuA</string>-->
+    <string name="google_maps_key">AIzaSyB06PTfw1mtL6haDT82RGtueEhwXNbgJAE</string>
+</resources>

@@ -6,8 +6,10 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.provider.MediaStore;
 import android.util.TypedValue;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
@@ -52,6 +55,7 @@ public class CarnetActivity extends AppCompatActivity {
 
     //position des éléments
     int positionTextView=2000;
+    int positionImageView=1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +80,8 @@ public class CarnetActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         //On sauvegarde la photo de l'ImageView dans le Bundle
-        outState.putParcelable("PHOTO",image);
+        outState.putString("KEY_PHOTO",photoPath);
+        //outState.putParcelable("KEY_CARNET", (Parcelable) carnet); //on doit l'ajouter à la liste des carnets
         super.onSaveInstanceState(outState);
     }
 
@@ -84,7 +89,8 @@ public class CarnetActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         //On récupère le texte qui est dans le Bundle
         super.onRestoreInstanceState(savedInstanceState);
-        image= savedInstanceState.getParcelable("PHOTO");
+        String path= savedInstanceState.getString("KEY_PHOTO");
+        image = BitmapFactory.decodeFile(photoPath);
         imgPhoto.setImageBitmap(image);
     }
 
@@ -163,7 +169,18 @@ public class CarnetActivity extends AppCompatActivity {
         if(requestCode==RETOUR_CAMERA && resultCode==RESULT_OK){
             carnet.addPhoto(photoPath);
             image = BitmapFactory.decodeFile(photoPath);
+//            image.setWidth(50);
+//            image.setHeight(100);
             imgPhoto.setImageBitmap(image);
+            //positionImageView-=200;
+            //ImageView imageView = new ImageView(getApplicationContext());
+            //imageView.setImageBitmap(image);
+            //imageView.setTranslationY(positionImageView);
+            //imageView.setTranslationX(150);
+            //imageView.setMaxWidth(50);
+            //imageView.setMaxHeight(100);
+//            int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, imgPhoto.getContext().getResources().getDisplayMetrics());
+//            monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width));
 
         }
         //INTENT DU TEXTE (result_canceled car on retourne à l'activité où il y a le carnet, pas une nouvelle)
@@ -178,7 +195,7 @@ public class CarnetActivity extends AppCompatActivity {
             textView.setTranslationY(positionTextView);
             textView.setTranslationX(50);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-            //textView.setBackgroundResource(R.drawable.bordure_textview);
+            //textView.setBackgroundResource(R.drawable.bordure_textview); //pour faire une jolie bordure mais ça rend moche
             monLayout.addView(textView);
 
         }
