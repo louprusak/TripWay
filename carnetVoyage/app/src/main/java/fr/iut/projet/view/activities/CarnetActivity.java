@@ -55,7 +55,7 @@ public class CarnetActivity extends AppCompatActivity {
 
     //position des éléments
     int positionTextView=2000;
-    int positionImageView=1000;
+    int positionImageView=2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +139,7 @@ public class CarnetActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
         //INTENT DE LA GALERIE
-
+        //POUR QUE CA MARCHE IL FAUT AUTORISER LES FICHIERS DANS APPLICATIONS>TRIPWAY
         if(requestCode==RETOUR_GALERIE && resultCode==RESULT_OK) {
 
             //Accès à l'image depuis l'intent
@@ -162,25 +162,30 @@ public class CarnetActivity extends AppCompatActivity {
             image = BitmapFactory.decodeFile(imgPath);
 
             //Affichage de l'image
+            //Création, redimensionnement et positionnement de l'imageView
+            ImageView imageView = new ImageView(getApplicationContext());
+            imageView.setImageBitmap(image);
+            positionImageView-=510;
+            imageView.setTranslationY(positionImageView);
+            imageView.setTranslationX(500);
+            int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width,height));
 
-            imgPhoto.setImageBitmap(image);
         }
         //INTENT DE LA CAMERA
         if(requestCode==RETOUR_CAMERA && resultCode==RESULT_OK){
             carnet.addPhoto(photoPath);
             image = BitmapFactory.decodeFile(photoPath);
-//            image.setWidth(50);
-//            image.setHeight(100);
-            imgPhoto.setImageBitmap(image);
-            //positionImageView-=200;
-            //ImageView imageView = new ImageView(getApplicationContext());
-            //imageView.setImageBitmap(image);
-            //imageView.setTranslationY(positionImageView);
-            //imageView.setTranslationX(150);
-            //imageView.setMaxWidth(50);
-            //imageView.setMaxHeight(100);
-//            int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, imgPhoto.getContext().getResources().getDisplayMetrics());
-//            monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width));
+            //Création , dimensionnement et positionnement de l'imageView
+            ImageView imageView = new ImageView(getApplicationContext());
+            imageView.setImageBitmap(image);
+            positionImageView-=510;
+            imageView.setTranslationY(positionImageView);
+            imageView.setTranslationX(500);
+            int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width,height));
 
         }
         //INTENT DU TEXTE (result_canceled car on retourne à l'activité où il y a le carnet, pas une nouvelle)
