@@ -194,13 +194,14 @@ public class CarnetActivity extends AppCompatActivity {
             //ajout du texte dans le carnet
             carnet.addTexte(texte);
             //création et positionnement de la textView associée à ce texte
-            positionTextView-=100;
+            positionTextView-=200;
             TextView textView = new TextView(getApplicationContext());
             textView.setText(texte);
             textView.setTranslationY(positionTextView);
             textView.setTranslationX(50);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-            //textView.setBackgroundResource(R.drawable.bordure_textview); //pour faire une jolie bordure mais ça rend moche
+            textView.setBackgroundResource(R.drawable.bordure_textview); //pour faire une jolie bordure mais ça rend moche
+            //textView.setBackgroundResource(R.drawable.bulle);
             monLayout.addView(textView);
 
         }
