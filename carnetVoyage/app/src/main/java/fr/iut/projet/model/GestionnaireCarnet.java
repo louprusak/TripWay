@@ -1,8 +1,10 @@
 package fr.iut.projet.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class GestionnaireCarnet {
+public class GestionnaireCarnet implements Serializable {
+
     private ArrayList<Carnet> lesCarnets;
 
     //+méthode load et save ?

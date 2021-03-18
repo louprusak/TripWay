@@ -8,26 +8,42 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.Serializable;
+
 import fr.iut.projet.R;
+import fr.iut.projet.data.Stub;
+import fr.iut.projet.model.GestionnaireCarnet;
+import fr.iut.projet.view.Serialize.Serialize;
 import fr.iut.projet.view.activities.CreateActivity;
 import fr.iut.projet.view.fragments.CreateFragment;
 import fr.iut.projet.view.fragments.HomeFragment;
 import fr.iut.projet.view.fragments.LogsFragment;
 import fr.iut.projet.view.fragments.MapFragment;
+import fr.iut.projet.view.interfaces.IGestionnaireCarnet;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IGestionnaireCarnet {
 
+    private GestionnaireCarnet manager;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Récupération des données
+        if(savedInstanceState != null){
+            manager = (GestionnaireCarnet) savedInstanceState.getSerializable("manager");
+        }
+        else{
+            manager = Serialize.deSerialize(getApplicationContext(),manager);
+        }
+        if(manager == null){
+            manager = new Stub().load();
+        }
+
+
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-
         BottomNavigationView menu = findViewById(R.id.bottom_navigation);
 
-        buttonClicOnNavHome();
-
+        //navigation
         menu.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.nav_home:
@@ -45,10 +61,9 @@ public class MainActivity extends AppCompatActivity {
             }
             return true;
         });
+         menu.setSelectedItemId(R.id.nav_home);
 
 
-        /*SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapfragment);
-        mapFragment.getMapAsync((OnMapReadyCallback) this);*/
     }
 
     private void buttonClicOnNavHome() {
@@ -76,14 +91,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPostResume() {
-        super.onPostResume();
-
-        
+    public GestionnaireCarnet getGestionnaireCarnet() {
+        return manager;
     }
 
-    public void clicBoutonCreate(View sender){
-        Intent monIntent=new Intent(this, CreateActivity.class);
-        startActivity(monIntent);
+    @Override
+    protected void onDestroy() {
+        Serialize.serialize(getApplicationContext(),manager);
+        super.onDestroy();
     }
 }

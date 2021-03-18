@@ -49,7 +49,7 @@ public class CreateFragment extends Fragment {
                 EditText edit_lieu = (EditText) getView().findViewById(R.id.edit_lieu_carnet);
                 String texte_lieu = edit_lieu.getText().toString();
 
-                Carnet carnet=new Carnet(texte_titre,texte_date,texte_lieu);
+                Carnet carnet=new Carnet(texte_titre,texte_date,texte_lieu,0,0);
                 Log.d("carnet :", carnet.toString()); //OK LE CARNET EST BIEN CREEE
 
                 /* Euh pour plus tard surement pour sauvegarder tous les carnets au même endroit ?
