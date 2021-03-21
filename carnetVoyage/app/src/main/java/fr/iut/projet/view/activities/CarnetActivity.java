@@ -27,10 +27,12 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
+import fr.iut.projet.model.GestionnaireCarnet;
 
 public class CarnetActivity extends AppCompatActivity {
 
@@ -52,6 +54,8 @@ public class CarnetActivity extends AppCompatActivity {
 
     //Le carnet en cours
     private Carnet carnet;
+    private Carnet carnetEnCours;
+    private GestionnaireCarnet gestionnaire;
 
     //position des éléments
     int positionTextView=2000;
@@ -70,6 +74,16 @@ public class CarnetActivity extends AppCompatActivity {
                 carnet = (Carnet) intentRecup.getSerializableExtra("moncarnet");
                 //Affichage des données du carnet
                 maTitreView.setText(carnet.toString());
+            }
+            //On récupère le gestionnaire de carnet
+            if((intentRecup.hasExtra("gestionnaire"))) {
+                gestionnaire = (GestionnaireCarnet) intentRecup.getSerializableExtra("gestionnaire");
+                ArrayList<Carnet> laListe = gestionnaire.getLesCarnets();
+                for(int i=0; i<laListe.size();i++){
+                    if(laListe.get(i).getTitre().equals(carnet.getTitre())){
+                        carnetEnCours=laListe.get(i);
+                    }
+                }
             }
 
         }
@@ -93,6 +107,8 @@ public class CarnetActivity extends AppCompatActivity {
         image = BitmapFactory.decodeFile(photoPath);
         imgPhoto.setImageBitmap(image);
     }
+
+
 
     /**
      * méthode appelée pendant le onCreate, qui récupère les éléments graphiques et initialise les évenements.
