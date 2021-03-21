@@ -55,7 +55,6 @@ public class CreateFragment extends Fragment {
                 String texte_lieu = edit_lieu.getText().toString();
 
                 Carnet carnet=new Carnet(texte_titre,texte_date,texte_lieu,0,0);
-                Log.d("carnet :", carnet.toString()); //OK LE CARNET EST BIEN CREEE
 
                 if(monGestionnaire==null){
                     //On récupère les carnets du Stub pour tester

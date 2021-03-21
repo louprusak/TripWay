@@ -79,6 +79,7 @@ public class CarnetActivity extends AppCompatActivity {
             if((intentRecup.hasExtra("gestionnaire"))) {
                 gestionnaire = (GestionnaireCarnet) intentRecup.getSerializableExtra("gestionnaire");
                 ArrayList<Carnet> laListe = gestionnaire.getLesCarnets();
+                //On récupère le carnet en cours de création
                 for(int i=0; i<laListe.size();i++){
                     if(laListe.get(i).getTitre().equals(carnet.getTitre())){
                         carnetEnCours=laListe.get(i);
@@ -95,7 +96,8 @@ public class CarnetActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         //On sauvegarde la photo de l'ImageView dans le Bundle
         outState.putString("KEY_PHOTO",photoPath);
-        //outState.putParcelable("KEY_CARNET", (Parcelable) carnet); //on doit l'ajouter à la liste des carnets
+        //On sauvegarde le Gestionnaire dans le Bundle
+        outState.putSerializable("KEY_GESTIONNAIRE",gestionnaire);
         super.onSaveInstanceState(outState);
     }
 
@@ -216,8 +218,7 @@ public class CarnetActivity extends AppCompatActivity {
             textView.setTranslationY(positionTextView);
             textView.setTranslationX(50);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-            textView.setBackgroundResource(R.drawable.bordure_textview); //pour faire une jolie bordure mais ça rend moche
-            //textView.setBackgroundResource(R.drawable.bulle);
+            textView.setBackgroundResource(R.drawable.bordure_textview);
             monLayout.addView(textView);
 
         }
