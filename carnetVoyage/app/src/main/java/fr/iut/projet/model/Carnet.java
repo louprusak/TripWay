@@ -60,6 +60,8 @@ public class Carnet implements Serializable {
         return titre;
     }
 
+
+
     public String getDate(){
         return date;
     }

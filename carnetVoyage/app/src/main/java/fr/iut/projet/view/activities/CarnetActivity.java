@@ -27,10 +27,12 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
+import fr.iut.projet.model.GestionnaireCarnet;
 
 public class CarnetActivity extends AppCompatActivity {
 
@@ -52,6 +54,8 @@ public class CarnetActivity extends AppCompatActivity {
 
     //Le carnet en cours
     private Carnet carnet;
+    private Carnet carnetEnCours;
+    private GestionnaireCarnet gestionnaire;
 
     //position des éléments
     int positionTextView=2000;
@@ -71,6 +75,17 @@ public class CarnetActivity extends AppCompatActivity {
                 //Affichage des données du carnet
                 maTitreView.setText(carnet.toString());
             }
+            //On récupère le gestionnaire de carnet
+            if((intentRecup.hasExtra("gestionnaire"))) {
+                gestionnaire = (GestionnaireCarnet) intentRecup.getSerializableExtra("gestionnaire");
+                ArrayList<Carnet> laListe = gestionnaire.getLesCarnets();
+                //On récupère le carnet en cours de création
+                for(int i=0; i<laListe.size();i++){
+                    if(laListe.get(i).getTitre().equals(carnet.getTitre())){
+                        carnetEnCours=laListe.get(i);
+                    }
+                }
+            }
 
         }
     }
@@ -81,7 +96,8 @@ public class CarnetActivity extends AppCompatActivity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         //On sauvegarde la photo de l'ImageView dans le Bundle
         outState.putString("KEY_PHOTO",photoPath);
-        //outState.putParcelable("KEY_CARNET", (Parcelable) carnet); //on doit l'ajouter à la liste des carnets
+        //On sauvegarde le Gestionnaire dans le Bundle
+        outState.putSerializable("KEY_GESTIONNAIRE",gestionnaire);
         super.onSaveInstanceState(outState);
     }
 
@@ -93,6 +109,8 @@ public class CarnetActivity extends AppCompatActivity {
         image = BitmapFactory.decodeFile(photoPath);
         imgPhoto.setImageBitmap(image);
     }
+
+
 
     /**
      * méthode appelée pendant le onCreate, qui récupère les éléments graphiques et initialise les évenements.
@@ -158,7 +176,7 @@ public class CarnetActivity extends AppCompatActivity {
             curseur.close();
 
             //Récupération de l'image
-            carnet.addPhoto(imgPath);
+            carnetEnCours.addPhoto(imgPath);
             image = BitmapFactory.decodeFile(imgPath);
 
             //Affichage de l'image
@@ -175,7 +193,7 @@ public class CarnetActivity extends AppCompatActivity {
         }
         //INTENT DE LA CAMERA
         if(requestCode==RETOUR_CAMERA && resultCode==RESULT_OK){
-            carnet.addPhoto(photoPath);
+            carnetEnCours.addPhoto(photoPath);
             image = BitmapFactory.decodeFile(photoPath);
             //Création , dimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
@@ -192,7 +210,7 @@ public class CarnetActivity extends AppCompatActivity {
         if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
             String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
             //ajout du texte dans le carnet
-            carnet.addTexte(texte);
+            carnetEnCours.addTexte(texte);
             //création et positionnement de la textView associée à ce texte
             positionTextView-=200;
             TextView textView = new TextView(getApplicationContext());
@@ -200,8 +218,7 @@ public class CarnetActivity extends AppCompatActivity {
             textView.setTranslationY(positionTextView);
             textView.setTranslationX(50);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-            textView.setBackgroundResource(R.drawable.bordure_textview); //pour faire une jolie bordure mais ça rend moche
-            //textView.setBackgroundResource(R.drawable.bulle);
+            textView.setBackgroundResource(R.drawable.bordure_textview);
             monLayout.addView(textView);
 
         }

@@ -12,15 +12,19 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import fr.iut.projet.R;
+import fr.iut.projet.data.Stub;
 import fr.iut.projet.model.Carnet;
+import fr.iut.projet.model.GestionnaireCarnet;
 import fr.iut.projet.view.activities.CarnetActivity;
 import fr.iut.projet.view.activities.MainActivity;
 
 public class CreateFragment extends Fragment {
 
     private MainActivity monActivite;
+    private GestionnaireCarnet monGestionnaire;
 
     static final String lecarnet="moncarnet";
+    static final String legestionnaire="gestionnaire";
 
     public CreateFragment() {
         super(R.layout.create);
@@ -29,8 +33,8 @@ public class CreateFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        monActivite = ((MainActivity) getContext());    //A Bannir !! préferer get activité
-
+        monActivite = (MainActivity)getActivity();
+        GestionnaireCarnet monGestionnaire=monActivite.getGestionnaireCarnet();
         init(view);
     }
 
@@ -51,16 +55,18 @@ public class CreateFragment extends Fragment {
                 String texte_lieu = edit_lieu.getText().toString();
 
                 Carnet carnet=new Carnet(texte_titre,texte_date,texte_lieu,0,0);
-                Log.d("carnet :", carnet.toString()); //OK LE CARNET EST BIEN CREEE
 
-                /* Euh pour plus tard surement pour sauvegarder tous les carnets au même endroit ?
-                GestionnaireCarnet gestionnaire=new GestionnaireCarnet();
-                gestionnaire.addCarnet(carnet); */
+                if(monGestionnaire==null){
+                    //On récupère les carnets du Stub pour tester
+                    monGestionnaire = new Stub().load();
+                }
+                monGestionnaire.addCarnet(carnet);
 
 
                 //On passe à l'activité suivante
                 Intent monIntent=new Intent(getActivity(), CarnetActivity.class);
                 monIntent.putExtra(lecarnet,carnet); //On passe le nouveau carnet
+                monIntent.putExtra(legestionnaire,monGestionnaire); //On passe le gestionnaire
                 startActivity(monIntent);
             }
         } );
