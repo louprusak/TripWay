@@ -16,8 +16,9 @@ public class Stub {
     }
 
     public GestionnaireCarnet load(){
-        testAffichageListe();
-        return laListe;
+        //testAffichageListe();
+        //return laListe;
+        return null;
     }
 
 

@@ -30,6 +30,7 @@ public class CreateFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         monActivite = ((MainActivity) getContext());    //A Bannir !! préferer get activité
+
         init(view);
     }
 

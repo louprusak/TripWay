@@ -41,7 +41,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 if(acivity instanceof IGestionnaireCarnet){
                    return  ((MainActivity) acivity).getGestionnaireCarnet();
                 }
-                return null;
+                return null; // faire attention de tester le résultat null
     }
 
 
@@ -59,22 +59,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         //recuperer la liste des carnets et pour chaque faire le add marker
 
-        loadMarkers(googleMap);
+        //loadMarkers(googleMap);
 
         //googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
     public void loadMarkers(GoogleMap map){
         ArrayList<Carnet> carnets = getCarnets().getLesCarnets();
-        for (Carnet carnet: carnets) {
-            LatLng marker = new LatLng(carnet.getLatitude(), carnet.getLongitude());
-            map.addMarker(new MarkerOptions()
-                    .position(marker)
-                    .title(carnet.getTitre())
-                    .snippet("Pays : "+carnet.getPays() +
-                            " - Lieu : "+ carnet.getLieu()+
-                            "- Date : "+carnet.getDate())); //utiliser id pour retrouver le carnet
+        if(carnets != null){
+            for (Carnet carnet: carnets) {
+                LatLng marker = new LatLng(carnet.getLatitude(), carnet.getLongitude());
+                map.addMarker(new MarkerOptions()
+                        .position(marker)
+                        .title(carnet.getTitre())
+                        .snippet("Pays : "+carnet.getPays() +
+                                " - Lieu : "+ carnet.getLieu()+
+                                "- Date : "+carnet.getDate())); //utiliser id pour retrouver le carnet
+            }
         }
+
         //recuperer la liste des carnets de la persistance
         //faire un foreach sur les éléments
         //faire un truc du genre :
