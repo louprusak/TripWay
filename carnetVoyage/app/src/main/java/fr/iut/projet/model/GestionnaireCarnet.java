@@ -23,4 +23,6 @@ public class GestionnaireCarnet implements Serializable {
     public String toString(){
         return "\nTous les carnets : "+lesCarnets;
     }
+
+    public void setLesCarnets(ArrayList<Carnet> liste) {this.lesCarnets = liste;}
 }
