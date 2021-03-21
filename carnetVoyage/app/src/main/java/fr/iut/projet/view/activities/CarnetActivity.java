@@ -174,7 +174,7 @@ public class CarnetActivity extends AppCompatActivity {
             curseur.close();
 
             //Récupération de l'image
-            carnet.addPhoto(imgPath);
+            carnetEnCours.addPhoto(imgPath);
             image = BitmapFactory.decodeFile(imgPath);
 
             //Affichage de l'image
@@ -191,7 +191,7 @@ public class CarnetActivity extends AppCompatActivity {
         }
         //INTENT DE LA CAMERA
         if(requestCode==RETOUR_CAMERA && resultCode==RESULT_OK){
-            carnet.addPhoto(photoPath);
+            carnetEnCours.addPhoto(photoPath);
             image = BitmapFactory.decodeFile(photoPath);
             //Création , dimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
@@ -208,7 +208,7 @@ public class CarnetActivity extends AppCompatActivity {
         if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
             String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
             //ajout du texte dans le carnet
-            carnet.addTexte(texte);
+            carnetEnCours.addTexte(texte);
             //création et positionnement de la textView associée à ce texte
             positionTextView-=200;
             TextView textView = new TextView(getApplicationContext());
