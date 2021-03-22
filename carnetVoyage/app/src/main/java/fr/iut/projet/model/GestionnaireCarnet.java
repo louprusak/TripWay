@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class GestionnaireCarnet implements Serializable {
 
-    private ArrayList<Carnet> lesCarnets;
+    public ArrayList<Carnet> lesCarnets;
 
     //+méthode load et save ?
     public GestionnaireCarnet() {

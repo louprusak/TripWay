@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import fr.iut.projet.R;
+import fr.iut.projet.model.Carnet;
 
 public class MyAdapter extends RecyclerView.Adapter {
 
-    private List<Object> laListe;
+    private List<Carnet> laListe;
 
-    public MyAdapter(List<Object> laListe){
+    public MyAdapter(List<Carnet> laListe){
         this.laListe = laListe;
     }
 
