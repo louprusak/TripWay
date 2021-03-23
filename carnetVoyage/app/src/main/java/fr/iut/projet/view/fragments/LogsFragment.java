@@ -1,7 +1,10 @@
 package fr.iut.projet.view.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,11 +17,21 @@ import java.util.ArrayList;
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
 import fr.iut.projet.model.GestionnaireCarnet;
+import fr.iut.projet.view.activities.CarnetActivity;
+import fr.iut.projet.view.activities.MainActivity;
 import fr.iut.projet.view.adapter.Adaptateur;
 import fr.iut.projet.view.adapter.CarnetItem;
+import fr.iut.projet.view.adapter.ViewHolder;
 
-public class LogsFragment extends Fragment {
+public class LogsFragment extends Fragment implements ViewHolder.MonClickListener {
     //private GestionnaireCarnet lesCarnets = Stub.load();
+
+    private MainActivity monActivite;
+    private GestionnaireCarnet monGestionnaire;
+    private Carnet carnetEnCours;
+
+    static final String lecarnet="moncarnet";
+    static final String legestionnaire="gestionnaire";
 
     ArrayList<CarnetItem> listeCarnets = new ArrayList<>();
 
@@ -51,6 +64,23 @@ public class LogsFragment extends Fragment {
         RecyclerView laListView = v.findViewById(R.id.liste_view);
         laListView.setHasFixedSize(true);
         laListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        laListView.setAdapter(new Adaptateur(listeCarnets));
+        laListView.setAdapter(new Adaptateur(listeCarnets, this));
+    }
+
+    @Override
+    public void onMonclik(int position) {
+
+        monActivite = (MainActivity)getActivity();
+        GestionnaireCarnet monGestionnaire=monActivite.getGestionnaireCarnet();
+
+        ArrayList<Carnet> laListe = monGestionnaire.getLesCarnets();
+        carnetEnCours=laListe.get(position);
+
+        //On passe à l'activité suivante
+        Intent monIntent=new Intent(getActivity(), CarnetActivity.class);
+        monIntent.putExtra(lecarnet,carnetEnCours); //On passe le nouveau carnet
+        monIntent.putExtra(legestionnaire,monGestionnaire); //On passe le gestionnaire
+        startActivity(monIntent);
+
     }
 }
