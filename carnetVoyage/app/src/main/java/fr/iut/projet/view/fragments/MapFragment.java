@@ -1,7 +1,9 @@
 package fr.iut.projet.view.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -20,10 +22,14 @@ import java.util.ArrayList;
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
 import fr.iut.projet.model.GestionnaireCarnet;
+import fr.iut.projet.view.activities.CarnetActivity;
 import fr.iut.projet.view.activities.MainActivity;
 import fr.iut.projet.view.interfaces.IGestionnaireCarnet;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.InfoWindowAdapter {
+
+    static final String lecarnet="moncarnet";
+    static final String legestionnaire="gestionnaire";
 
     public MapFragment() {
         super(R.layout.map);
@@ -51,30 +57,37 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE); //a enlever juste pour tester la fonctionnalité
-                //utiliser l'ID du marker pour retrouver le carnet et afficher sa page dédiée
+                Carnet carnetEnCours= getCarnets().getLesCarnets().get((int)marker.getTag());
+                //On passe à l'activité suivante
+                Intent monIntent=new Intent(getActivity(), CarnetActivity.class);
+                monIntent.putExtra(lecarnet,carnetEnCours); //On passe le nouveau carnet
+                monIntent.putExtra(legestionnaire,getCarnets()); //On passe le gestionnaire
+                startActivity(monIntent);
             }
         });
 
 
         //recuperer la liste des carnets et pour chaque faire le add marker
 
-        //loadMarkers(googleMap);
+        loadMarkers(googleMap);
 
         //googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
     public void loadMarkers(GoogleMap map){
         ArrayList<Carnet> carnets = getCarnets().getLesCarnets();
+        int cpt = 0;
         if(carnets != null){
             for (Carnet carnet: carnets) {
-                LatLng marker = new LatLng(carnet.getLatitude(), carnet.getLongitude());
-                map.addMarker(new MarkerOptions()
-                        .position(marker)
+                LatLng coo = new LatLng(carnet.getLatitude(), carnet.getLongitude());
+                Marker marker = map.addMarker(new MarkerOptions()
+                        .position(coo)
                         .title(carnet.getTitre())
                         .snippet("Pays : "+carnet.getPays() +
                                 " - Lieu : "+ carnet.getLieu()+
                                 "- Date : "+carnet.getDate())); //utiliser id pour retrouver le carnet
+                marker.setTag(cpt);
+                cpt++;
             }
         }
 

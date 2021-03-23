@@ -53,7 +53,7 @@ public class Carnet implements Serializable {
 
     public String toString(){
 
-        return "\nTitre du carnet : "+this.titre+"\n Date du voyage :"+this.date+"\n Lieu du voyage :"+this.lieu;
+        return "Titre : "+this.titre+"\nDate :"+this.date+"\nLieu :"+this.lieu;
     }
 
     public String getTitre(){

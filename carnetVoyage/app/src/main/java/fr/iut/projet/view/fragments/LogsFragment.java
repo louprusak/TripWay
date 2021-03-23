@@ -1,5 +1,6 @@
 package fr.iut.projet.view.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import fr.iut.projet.view.activities.MainActivity;
 import fr.iut.projet.view.adapter.Adaptateur;
 import fr.iut.projet.view.adapter.CarnetItem;
 import fr.iut.projet.view.adapter.ViewHolder;
+import fr.iut.projet.view.interfaces.IGestionnaireCarnet;
 
 public class LogsFragment extends Fragment implements ViewHolder.MonClickListener {
     //private GestionnaireCarnet lesCarnets = Stub.load();
@@ -39,11 +41,7 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
     private Carnet c2=new Carnet("Voyage à Paris","Août 2020","France",38.609556, -1.139637);
     private Carnet c3=new Carnet("Voyage à Tokyo","Juin 2020","Japon",43.2568193,-2.9225534);
 
-    public void creationListe(){
-        listeCarnets.add(new CarnetItem(c1.getTitre()));
-        listeCarnets.add(new CarnetItem(c2.getTitre()));
-        listeCarnets.add(new CarnetItem(c3.getTitre()));
-    }
+
 
 
 
@@ -60,18 +58,21 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
 
 
     private void init(View v) {
-
         RecyclerView laListView = v.findViewById(R.id.liste_view);
         laListView.setHasFixedSize(true);
         laListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         laListView.setAdapter(new Adaptateur(listeCarnets, this));
     }
 
+    public void creationListe(){
+        for (Carnet c : getCarnets().getLesCarnets()){
+            listeCarnets.add(new CarnetItem(c.getTitre()));
+        }
+    }
+
     @Override
     public void onMonclik(int position) {
-
-        monActivite = (MainActivity)getActivity();
-        GestionnaireCarnet monGestionnaire=monActivite.getGestionnaireCarnet();
+        GestionnaireCarnet monGestionnaire= getCarnets();
 
         ArrayList<Carnet> laListe = monGestionnaire.getLesCarnets();
         carnetEnCours=laListe.get(position);
@@ -82,5 +83,13 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
         monIntent.putExtra(legestionnaire,monGestionnaire); //On passe le gestionnaire
         startActivity(monIntent);
 
+    }
+
+    public GestionnaireCarnet getCarnets(){
+        Activity acivity = getActivity();
+        if(acivity instanceof IGestionnaireCarnet){
+            return  ((MainActivity) acivity).getGestionnaireCarnet();
+        }
+        return null; // faire attention de tester le résultat null
     }
 }

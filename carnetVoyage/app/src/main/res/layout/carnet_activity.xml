@@ -7,6 +7,16 @@
     android:layout_height="match_parent"
     android:id="@+id/layout">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btnGalerie"
         android:layout_width="66dp"
@@ -58,7 +68,7 @@
 
     <TextView
         android:id="@+id/texte_anecdote"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,11 +80,12 @@
 
     <TextView
         android:id="@+id/titre_view"
-        android:layout_width="412dp"
-        android:layout_height="166dp"
-        android:background="#FF9800"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/jaune_pastel"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:padding="10dp"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/imgPhoto"
         app:layout_constraintEnd_toEndOf="parent"
