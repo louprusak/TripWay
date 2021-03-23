@@ -1,10 +1,7 @@
 package fr.iut.projet.view.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,28 +10,26 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import fr.iut.projet.R;
-import fr.iut.projet.data.Stub;
 import fr.iut.projet.model.Carnet;
 import fr.iut.projet.model.GestionnaireCarnet;
-import fr.iut.projet.view.activities.CarnetActivity;
-import fr.iut.projet.view.activities.MainActivity;
-import fr.iut.projet.view.adapter.MyAdapter;
+import fr.iut.projet.view.adapter.Adaptateur;
+import fr.iut.projet.view.adapter.CarnetItem;
 
 public class LogsFragment extends Fragment {
     //private GestionnaireCarnet lesCarnets = Stub.load();
 
-    private GestionnaireCarnet laListe=new GestionnaireCarnet();
+    ArrayList<CarnetItem> listeCarnets = new ArrayList<>();
+
     private Carnet c1=new Carnet("Voyage à Londres","Juillet 2020","Angeleterre",0,0);
     private Carnet c2=new Carnet("Voyage à Paris","Août 2020","France",38.609556, -1.139637);
     private Carnet c3=new Carnet("Voyage à Tokyo","Juin 2020","Japon",43.2568193,-2.9225534);
 
     public void creationListe(){
-        laListe.addCarnet(c1);
-        laListe.addCarnet(c2);
-        laListe.addCarnet(c3);
+        listeCarnets.add(new CarnetItem(c1.getTitre()));
+        listeCarnets.add(new CarnetItem(c2.getTitre()));
+        listeCarnets.add(new CarnetItem(c3.getTitre()));
     }
 
 
@@ -52,9 +47,10 @@ public class LogsFragment extends Fragment {
 
 
     private void init(View v) {
-        RecyclerView laListView = v.findViewById(R.id.liste_view);
 
+        RecyclerView laListView = v.findViewById(R.id.liste_view);
+        laListView.setHasFixedSize(true);
         laListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        laListView.setAdapter(new MyAdapter(laListe.lesCarnets));
+        laListView.setAdapter(new Adaptateur(listeCarnets));
     }
 }
