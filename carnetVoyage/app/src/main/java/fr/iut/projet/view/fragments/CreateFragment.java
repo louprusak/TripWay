@@ -66,37 +66,45 @@ public class CreateFragment extends Fragment {
                 EditText edit_pays = (EditText) getView().findViewById(R.id.edit_pays_carnet);
                 String texte_pays = edit_pays.getText().toString();
 
-                EditText edit_lat = (EditText) getView().findViewById(R.id.edit_lat_carnet);
-                Double texte_lat = 0.0;
-                /*if(edit_lat.getText().toString().equals("")){
-                    Log.d("CO","passé dans le if pour lat");
-                    texte_lat = Double.parseDouble(edit_lat.getText().toString());}*/
+                try {
+                    EditText edit_lat = (EditText) getView().findViewById(R.id.edit_lat_carnet);
+                    Double texte_lat = 0.0;
+                    if (edit_lat.getText().toString().equals("")) {
+                        Log.d("CO", "passé dans le if pour lat");
+                        texte_lat = Double.parseDouble(edit_lat.getText().toString());
+                    }
 
-                EditText edit_long = (EditText) getView().findViewById(R.id.edit_long_carnet);
-                Double texte_long = 0.0;
-                /*if(edit_long.getText().toString().equals("")){
-                    Log.d("CO","passé dans le if pour long");
-                    texte_long = Double.parseDouble(edit_long.getText().toString());}*/
-
-
-
-                Carnet carnet=new Carnet(texte_titre,texte_date,texte_pays,texte_lieu,texte_lat,texte_long);
-
+                    EditText edit_long = (EditText) getView().findViewById(R.id.edit_long_carnet);
+                    Double texte_long = 0.0;
+                    if (edit_long.getText().toString().equals("")) {
+                        Log.d("CO", "passé dans le if pour long");
+                        texte_long = Double.parseDouble(edit_long.getText().toString());
+                    }
 
 
-                if(monGestionnaire==null){
-                    Log.d("MANAGER","nul");
-                    //On récupère les carnets du Stub pour tester
-                    monGestionnaire = Stub.load();
+                    Carnet carnet = new Carnet(texte_titre, texte_date, texte_pays, texte_lieu, texte_lat, texte_long);
+
+                    if(monGestionnaire==null){
+                        Log.d("MANAGER","nul");
+                        //On récupère les carnets du Stub pour tester
+                        monGestionnaire = Stub.load();
+                    }
+                    monGestionnaire.addCarnet(carnet);
+
+
+                    //On passe à l'activité suivante
+                    Intent monIntent=new Intent(getActivity(), CarnetActivity.class);
+                    monIntent.putExtra(lecarnet,carnet); //On passe le nouveau carnet
+                    monIntent.putExtra(legestionnaire,monGestionnaire); //On passe le gestionnaire
+                    startActivity(monIntent);
+
                 }
-                monGestionnaire.addCarnet(carnet);
+                catch(Exception e){
+                    Intent monIntent=new Intent(getActivity(), MainActivity.class);
+                    startActivity(monIntent);
+                }
 
 
-                //On passe à l'activité suivante
-                Intent monIntent=new Intent(getActivity(), CarnetActivity.class);
-                monIntent.putExtra(lecarnet,carnet); //On passe le nouveau carnet
-                monIntent.putExtra(legestionnaire,monGestionnaire); //On passe le gestionnaire
-                startActivity(monIntent);
             }
         } );
     }
