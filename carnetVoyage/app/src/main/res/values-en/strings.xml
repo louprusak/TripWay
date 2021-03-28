@@ -17,6 +17,10 @@
     <string name="text3_home">The add tab allows you to create a new travel notebook.</string>
 
 
+    <!-- CREATE PAGE -->
+    <string name="title_create">To add a new notebook, please enter : </string>
+    <string name="title_logs">Your trip logs : </string>
+
         <!-- GOOGLE MAPS API -->
         <!--<string name="google_maps_key">AIzaSyA4AioFGh3tnz9udrRJNWSmo2YuAWzaTuA</string>-->
     <string name="google_maps_key">AIzaSyB06PTfw1mtL6haDT82RGtueEhwXNbgJAE</string>

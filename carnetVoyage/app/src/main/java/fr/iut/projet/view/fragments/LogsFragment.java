@@ -26,7 +26,7 @@ import fr.iut.projet.view.adapter.ViewHolder;
 import fr.iut.projet.view.interfaces.IGestionnaireCarnet;
 
 public class LogsFragment extends Fragment implements ViewHolder.MonClickListener {
-    //private GestionnaireCarnet lesCarnets = Stub.load();
+
 
     private MainActivity monActivite;
     private GestionnaireCarnet monGestionnaire;
@@ -37,9 +37,7 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
 
     ArrayList<CarnetItem> listeCarnets = new ArrayList<>();
 
-    private Carnet c1=new Carnet("Voyage à Londres","Juillet 2020","Angeleterre",0,0);
-    private Carnet c2=new Carnet("Voyage à Paris","Août 2020","France",38.609556, -1.139637);
-    private Carnet c3=new Carnet("Voyage à Tokyo","Juin 2020","Japon",43.2568193,-2.9225534);
+
 
 
 

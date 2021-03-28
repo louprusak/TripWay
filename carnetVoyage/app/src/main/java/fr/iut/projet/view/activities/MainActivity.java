@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements IGestionnaireCarn
         }
         if(manager == null){
             Log.d("SERIALIZE","on utilise le stub pour charger les données");
-            manager = new Stub().load();
+            manager = Stub.load();
         }
 
 

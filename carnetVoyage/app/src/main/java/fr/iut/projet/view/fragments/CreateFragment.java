@@ -54,11 +54,16 @@ public class CreateFragment extends Fragment {
                 EditText edit_lieu = (EditText) getView().findViewById(R.id.edit_lieu_carnet);
                 String texte_lieu = edit_lieu.getText().toString();
 
-                Carnet carnet=new Carnet(texte_titre,texte_date,texte_lieu,0,0);
+                EditText edit_pays = (EditText) getView().findViewById(R.id.edit_lieu_carnet); //A MODIFIER
+                String texte_pays = edit_pays.getText().toString();
+
+                Carnet carnet=new Carnet(texte_titre,texte_date,texte_pays,texte_lieu,0,0);
+
+
 
                 if(monGestionnaire==null){
                     //On récupère les carnets du Stub pour tester
-                    monGestionnaire = new Stub().load();
+                    monGestionnaire = Stub.load();
                 }
                 monGestionnaire.addCarnet(carnet);
 

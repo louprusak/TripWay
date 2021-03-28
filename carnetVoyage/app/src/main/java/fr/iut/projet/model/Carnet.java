@@ -20,11 +20,12 @@ public class Carnet implements Serializable {
 
     //CONSTRUCTEURS
 
-    public Carnet(String titre, String date, String lieu, double latitude, double longitude) {
+    public Carnet(String titre, String date,String pays, String lieu, double latitude, double longitude) {
         this.listePhotos = new ArrayList<>();
         this.listeTextes = new ArrayList<>();
         this.titre=titre;
         this.date=date;
+        this.pays = pays;
         this.lieu=lieu;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -41,11 +42,9 @@ public class Carnet implements Serializable {
         listeTextes.add(texte);
     }
 
-
     public List<String> getListePhotos() {
         return listePhotos;
     }
-
 
     public List<String> getListeTextes() {
         return listeTextes;
@@ -53,14 +52,12 @@ public class Carnet implements Serializable {
 
     public String toString(){
 
-        return "Titre : "+this.titre+"\nDate :"+this.date+"\nLieu :"+this.lieu;
+        return "Titre : "+this.titre+"\nDate : "+this.date+"\nPays : "+this.pays+"\nLieu : "+this.lieu;
     }
 
     public String getTitre(){
         return titre;
     }
-
-
 
     public String getDate(){
         return date;
