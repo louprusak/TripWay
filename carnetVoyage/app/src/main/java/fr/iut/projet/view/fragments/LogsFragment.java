@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
@@ -59,10 +60,20 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
         laListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         laListView.setAdapter(new Adaptateur(listeCarnets, this));
 
-        //Récupération éléments graphiques
-
 
     }
+
+     @Override
+     public void clicSuppression(int position){
+         //supprimer le carnet courant
+         this.monGestionnaire=getCarnets();
+         Log.d("TOTO","Suppression du carnet n° :"+position);
+         this.monGestionnaire.supprimerCarnet(position);
+
+         //On rapelle l'activité pour actualiser
+         Intent monIntent=new Intent(getActivity(), MainActivity.class);
+         startActivity(monIntent);
+     }
 
     public void creationListe(){
         for (Carnet c : getCarnets().getLesCarnets()){
@@ -76,9 +87,6 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
 
         ArrayList<Carnet> laListe = monGestionnaire.getLesCarnets();
         carnetEnCours=laListe.get(position);
-
-        Log.d("TOTO","Je passe ici");
-
 
         //On passe à l'activité suivante
         Intent monIntent=new Intent(getActivity(), CarnetActivity.class);

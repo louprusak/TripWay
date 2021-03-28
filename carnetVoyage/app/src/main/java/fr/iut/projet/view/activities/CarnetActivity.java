@@ -124,7 +124,7 @@ public class CarnetActivity extends AppCompatActivity {
         btnTexte=(Button)findViewById(R.id.btnTexte);
         maTexteView=(TextView)findViewById(R.id.texte_anecdote);
         maTitreView=(TextView)findViewById(R.id.titre_view);
-        monLayout=(LinearLayout) findViewById(R.id.layout);
+        monLayout=(LinearLayout) findViewById(R.id.layout_content);
 
         //initialisation des clics sur les boutons
         createOnClicGalerie();

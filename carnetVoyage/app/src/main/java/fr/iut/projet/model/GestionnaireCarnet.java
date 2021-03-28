@@ -16,6 +16,10 @@ public class GestionnaireCarnet implements Serializable {
         lesCarnets.add(c);
     }
 
+    public void supprimerCarnet(int position){
+        lesCarnets.remove(position);
+    }
+
     public ArrayList<Carnet> getLesCarnets() {
         return lesCarnets;
     }
