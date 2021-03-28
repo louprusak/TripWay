@@ -58,8 +58,8 @@ public class CarnetActivity extends AppCompatActivity {
     private GestionnaireCarnet gestionnaire;
 
     //position des éléments
-    int positionTextView=2000;
-    int positionImageView=2000;
+    int positionTextView=100;
+    int positionImageView=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

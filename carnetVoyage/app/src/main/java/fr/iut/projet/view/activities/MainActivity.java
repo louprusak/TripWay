@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements IGestionnaireCarn
             manager = Stub.load();
         }
 
+        Log.d("MANAGER",manager.toString());
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements IGestionnaireCarn
     @Override
     protected void onDestroy() {
         Log.d("SERIALIZE","Destruction de l'application");
+        Log.d("MANAGER",manager.toString());
         Serialize.serialize(getApplicationContext(),manager);
         super.onDestroy();
     }

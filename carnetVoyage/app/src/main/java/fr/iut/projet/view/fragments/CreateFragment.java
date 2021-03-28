@@ -1,5 +1,6 @@
 package fr.iut.projet.view.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import fr.iut.projet.model.Carnet;
 import fr.iut.projet.model.GestionnaireCarnet;
 import fr.iut.projet.view.activities.CarnetActivity;
 import fr.iut.projet.view.activities.MainActivity;
+import fr.iut.projet.view.interfaces.IGestionnaireCarnet;
 
 public class CreateFragment extends Fragment {
 
@@ -34,10 +36,17 @@ public class CreateFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         monActivite = (MainActivity)getActivity();
-        GestionnaireCarnet monGestionnaire=monActivite.getGestionnaireCarnet();
+        this.monGestionnaire=getCarnets();
         init(view);
     }
 
+    public GestionnaireCarnet getCarnets(){
+        Activity acivity = getActivity();
+        if(acivity instanceof IGestionnaireCarnet){
+            return  ((MainActivity) acivity).getGestionnaireCarnet();
+        }
+        return null; // faire attention de tester le résultat null
+    }
 
     private void init(View v){
         Button b=(Button)v.findViewById(R.id.button);
@@ -54,14 +63,29 @@ public class CreateFragment extends Fragment {
                 EditText edit_lieu = (EditText) getView().findViewById(R.id.edit_lieu_carnet);
                 String texte_lieu = edit_lieu.getText().toString();
 
-                EditText edit_pays = (EditText) getView().findViewById(R.id.edit_lieu_carnet); //A MODIFIER
+                EditText edit_pays = (EditText) getView().findViewById(R.id.edit_pays_carnet);
                 String texte_pays = edit_pays.getText().toString();
 
-                Carnet carnet=new Carnet(texte_titre,texte_date,texte_pays,texte_lieu,0,0);
+                EditText edit_lat = (EditText) getView().findViewById(R.id.edit_lat_carnet);
+                Double texte_lat = 0.0;
+                /*if(edit_lat.getText().toString().equals("")){
+                    Log.d("CO","passé dans le if pour lat");
+                    texte_lat = Double.parseDouble(edit_lat.getText().toString());}*/
+
+                EditText edit_long = (EditText) getView().findViewById(R.id.edit_long_carnet);
+                Double texte_long = 0.0;
+                /*if(edit_long.getText().toString().equals("")){
+                    Log.d("CO","passé dans le if pour long");
+                    texte_long = Double.parseDouble(edit_long.getText().toString());}*/
+
+
+
+                Carnet carnet=new Carnet(texte_titre,texte_date,texte_pays,texte_lieu,texte_lat,texte_long);
 
 
 
                 if(monGestionnaire==null){
+                    Log.d("MANAGER","nul");
                     //On récupère les carnets du Stub pour tester
                     monGestionnaire = Stub.load();
                 }
