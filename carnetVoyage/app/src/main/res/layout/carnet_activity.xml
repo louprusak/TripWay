@@ -25,8 +25,8 @@
         android:padding="10dp"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
+
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -44,7 +44,9 @@
             android:id="@+id/layout_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:padding="10dp"
+            />
     </ScrollView>
 
 

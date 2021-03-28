@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Parcelable;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -184,12 +187,12 @@ public class CarnetActivity extends AppCompatActivity {
             //Création, redimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(image);
-            positionImageView-=510;
-            imageView.setTranslationY(positionImageView);
-            imageView.setTranslationX(500);
-            int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
-            int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
-            monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width,height));
+            //positionImageView-=510;
+            //imageView.setTranslationY(positionImageView);
+            //imageView.setTranslationX(500);
+            //int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            //int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            monLayout.addView(imageView);
 
         }
         //INTENT DE LA CAMERA
@@ -199,12 +202,12 @@ public class CarnetActivity extends AppCompatActivity {
             //Création , dimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(image);
-            positionImageView-=510;
-            imageView.setTranslationY(positionImageView);
-            imageView.setTranslationX(500);
-            int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
-            int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
-            monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width,height));
+            //positionImageView-=510;
+            //imageView.setTranslationY(positionImageView);
+            //imageView.setTranslationX(500);
+            //int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            //int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
+            monLayout.addView(imageView);
 
         }
         //INTENT DU TEXTE (result_canceled car on retourne à l'activité où il y a le carnet, pas une nouvelle)
@@ -214,17 +217,24 @@ public class CarnetActivity extends AppCompatActivity {
                 //ajout du texte dans le carnet
                 carnetEnCours.addTexte(texte);
                 //création et positionnement de la textView associée à ce texte
-                positionTextView -= 200;
+                //positionTextView -= 200;
                 TextView textView = new TextView(getApplicationContext());
+                textView.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
+                //textView.setBackgroundColor(R.color.black);
+                textView.setTypeface(null, Typeface.BOLD);
+                textView.setTextColor(Color.BLACK);
                 textView.setText(texte);
-                textView.setTranslationY(positionTextView);
-                textView.setTranslationX(50);
+                //textView.setTranslationY(positionTextView);
+                //textView.setTranslationX(50);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-                textView.setBackgroundResource(R.drawable.bordure_textview);
+                //.setBackgroundResource(R.drawable.bordure_textview);
                 monLayout.addView(textView);
             }
 
         }
+
+        Log.d("CARNET",carnetEnCours.getListePhotos().toString());
+        Log.d("CARNET",carnetEnCours.getListeTextes().toString());
 
     }
 
