@@ -72,7 +72,6 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
          Log.d("TOTO","Suppression du carnet n° :"+position);
          this.monGestionnaire.getLesCarnets().remove(position);
 
-         //Serialize.serialize(getContext(),getCarnets());
 
          getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.afficheurfragment,new LogsFragment(), null)
                  .commit();

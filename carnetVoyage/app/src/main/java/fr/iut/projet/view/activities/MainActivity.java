@@ -15,7 +15,7 @@ import fr.iut.projet.R;
 import fr.iut.projet.data.Stub;
 import fr.iut.projet.model.GestionnaireCarnet;
 import fr.iut.projet.view.Serialize.Serialize;
-import fr.iut.projet.view.activities.CreateActivity;
+
 import fr.iut.projet.view.fragments.CreateFragment;
 import fr.iut.projet.view.fragments.HomeFragment;
 import fr.iut.projet.view.fragments.LogsFragment;

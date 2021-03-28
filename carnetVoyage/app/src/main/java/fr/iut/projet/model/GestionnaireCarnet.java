@@ -7,17 +7,12 @@ public class GestionnaireCarnet implements Serializable {
 
     public ArrayList<Carnet> lesCarnets;
 
-    //+méthode load et save ?
     public GestionnaireCarnet() {
         this.lesCarnets=new ArrayList<>();
     }
 
     public void addCarnet(Carnet c){
         lesCarnets.add(c);
-    }
-
-    public void supprimerCarnet(int position){
-        lesCarnets.remove(position);
     }
 
     public ArrayList<Carnet> getLesCarnets() {
@@ -28,5 +23,4 @@ public class GestionnaireCarnet implements Serializable {
         return "\nTous les carnets : "+lesCarnets;
     }
 
-    public void setLesCarnets(ArrayList<Carnet> liste) {this.lesCarnets = liste;}
 }

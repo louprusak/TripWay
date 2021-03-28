@@ -63,8 +63,6 @@ public class CarnetActivity extends AppCompatActivity {
     private GestionnaireCarnet gestionnaire;
     private int positon;
     //position des éléments
-    int positionTextView=100;
-    int positionImageView=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,11 +213,6 @@ public class CarnetActivity extends AppCompatActivity {
             //Création, redimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(image);
-            //positionImageView-=510;
-            //imageView.setTranslationY(positionImageView);
-            //imageView.setTranslationX(500);
-            //int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
-            //int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
             monLayout.addView(imageView);
 
         }
@@ -230,11 +223,6 @@ public class CarnetActivity extends AppCompatActivity {
             //Création , dimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(image);
-            //positionImageView-=510;
-            //imageView.setTranslationY(positionImageView);
-            //imageView.setTranslationX(500);
-            //int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
-            //int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
             monLayout.addView(imageView);
 
         }
@@ -245,17 +233,12 @@ public class CarnetActivity extends AppCompatActivity {
                 //ajout du texte dans le carnet
                 carnetEnCours.addTexte(texte);
                 //création et positionnement de la textView associée à ce texte
-                //positionTextView -= 200;
                 TextView textView = new TextView(getApplicationContext());
                 textView.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
-                //textView.setBackgroundColor(R.color.black);
                 textView.setTypeface(null, Typeface.BOLD);
                 textView.setTextColor(Color.BLACK);
                 textView.setText(texte);
-                //textView.setTranslationY(positionTextView);
-                //textView.setTranslationX(50);
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-                //.setBackgroundResource(R.drawable.bordure_textview);
                 monLayout.addView(textView);
             }
 

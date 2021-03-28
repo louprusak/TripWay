@@ -71,7 +71,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         loadMarkers(googleMap);
 
-        //googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
     }
 
     public void loadMarkers(GoogleMap map){
@@ -91,9 +90,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         }
 
-        //recuperer la liste des carnets de la persistance
-        //faire un foreach sur les éléments
-        //faire un truc du genre :
 
 
     }

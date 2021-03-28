@@ -37,11 +37,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.activities.CreateActivity" android:parentActivityName=".view.activities.MainActivity">
-
-        </activity>
-
-        <activity android:name=".view.activities.CarnetActivity" android:parentActivityName=".view.activities.CreateActivity">
+        <activity android:name=".view.activities.CarnetActivity">
 
         </activity>
 
