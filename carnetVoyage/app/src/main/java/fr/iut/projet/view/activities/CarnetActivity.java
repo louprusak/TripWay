@@ -62,8 +62,6 @@ public class CarnetActivity extends AppCompatActivity {
     int positionTextView=100;
     int positionImageView=100;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,7 +124,7 @@ public class CarnetActivity extends AppCompatActivity {
         btnTexte=(Button)findViewById(R.id.btnTexte);
         maTexteView=(TextView)findViewById(R.id.texte_anecdote);
         maTitreView=(TextView)findViewById(R.id.titre_view);
-        monLayout=(LinearLayout) findViewById(R.id.layout_content);
+        monLayout=(LinearLayout) findViewById(R.id.layout);
 
         //initialisation des clics sur les boutons
         createOnClicGalerie();
@@ -186,9 +184,9 @@ public class CarnetActivity extends AppCompatActivity {
             //Création, redimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(image);
-            //positionImageView-=510;
-            //imageView.setTranslationY(positionImageView);
-            //imageView.setTranslationX(500);
+            positionImageView-=510;
+            imageView.setTranslationY(positionImageView);
+            imageView.setTranslationX(500);
             int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
             int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
             monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width,height));
@@ -212,17 +210,19 @@ public class CarnetActivity extends AppCompatActivity {
         //INTENT DU TEXTE (result_canceled car on retourne à l'activité où il y a le carnet, pas une nouvelle)
         if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
             String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
-            //ajout du texte dans le carnet
-            carnetEnCours.addTexte(texte);
-            //création et positionnement de la textView associée à ce texte
-            positionTextView-=200;
-            TextView textView = new TextView(getApplicationContext());
-            textView.setText(texte);
-            //textView.setTranslationY(positionTextView);
-           // textView.setTranslationX(50);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-            textView.setBackgroundResource(R.drawable.bordure_textview);
-            monLayout.addView(textView);
+            if(texte!=null) {
+                //ajout du texte dans le carnet
+                carnetEnCours.addTexte(texte);
+                //création et positionnement de la textView associée à ce texte
+                positionTextView -= 200;
+                TextView textView = new TextView(getApplicationContext());
+                textView.setText(texte);
+                textView.setTranslationY(positionTextView);
+                textView.setTranslationX(50);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                textView.setBackgroundResource(R.drawable.bordure_textview);
+                monLayout.addView(textView);
+            }
 
         }
 

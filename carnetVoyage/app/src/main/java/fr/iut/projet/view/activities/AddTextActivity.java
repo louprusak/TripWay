@@ -18,6 +18,7 @@ public class AddTextActivity extends AppCompatActivity {
 
     //objet graphique
     private Button btnValider;
+    private Button btnAnnuler;
 
 
     @Override
@@ -33,9 +34,11 @@ public class AddTextActivity extends AppCompatActivity {
     private void initActivity() {
         //récupération des objets graphiques
         btnValider = (Button)findViewById(R.id.btn_valider_texte);
+        btnAnnuler = (Button)findViewById(R.id.btn_annuler_texte);
 
         //initialisation des clics sur les boutons
         createOnClicValider();
+        createOnClicAnnuler();
 
     }
 
@@ -75,6 +78,22 @@ public class AddTextActivity extends AppCompatActivity {
         finish();
     }
 
+    //GESTION DU CLIC SUR LE BOUTON ANNULER
+
+    private void createOnClicAnnuler(){
+        btnAnnuler.setOnClickListener(new Button.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clicAnnuler();
+            }
+        });
+    }
+
+    private void clicAnnuler(){
+        Intent monIntent=new Intent();
+        setResult(Activity.RESULT_CANCELED, monIntent); //permet de revenir à l'activité d'où on vient (pour ne pas perdre le carnet)
+        finish();
+    }
 
 
 }
