@@ -37,6 +37,7 @@ import java.util.Date;
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
 import fr.iut.projet.model.GestionnaireCarnet;
+import fr.iut.projet.view.Serialize.Serialize;
 
 public class CarnetActivity extends AppCompatActivity {
 
@@ -60,7 +61,7 @@ public class CarnetActivity extends AppCompatActivity {
     private Carnet carnet;
     private Carnet carnetEnCours;
     private GestionnaireCarnet gestionnaire;
-
+    private int positon;
     //position des éléments
     int positionTextView=100;
     int positionImageView=100;
@@ -87,11 +88,18 @@ public class CarnetActivity extends AppCompatActivity {
                 for(int i=0; i<laListe.size();i++){
                     if(laListe.get(i).getTitre().equals(carnet.getTitre())){
                         carnetEnCours=laListe.get(i);
+                        positon = i;
+                        if(carnetEnCours == null){Log.d("CARNET", "carnet en cours nul");}
                     }
                 }
             }
-
         }
+        Log.d("CARNET",carnetEnCours.getListePhotos().toString());
+        Log.d("CARNET",carnetEnCours.getListeTextes().toString());
+        loadCarnet();
+
+
+
     }
 
     //SAUVEGARDE LEGERE - sauvegarde des données quand on tourne l'écran
@@ -129,10 +137,30 @@ public class CarnetActivity extends AppCompatActivity {
         maTitreView=(TextView)findViewById(R.id.titre_view);
         monLayout=(LinearLayout) findViewById(R.id.layout_content);
 
+
+
         //initialisation des clics sur les boutons
         createOnClicGalerie();
         createOnClicCamera();
         createOnClicTexte();
+    }
+
+    private void loadCarnet() {
+        for (String s : carnetEnCours.getListeTextes()){
+            TextView textView = new TextView(getApplicationContext());
+            textView.setWidth(LinearLayout.LayoutParams.WRAP_CONTENT);
+            textView.setTypeface(null, Typeface.BOLD);
+            textView.setTextColor(Color.BLACK);
+            textView.setText(s);
+            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+            monLayout.addView(textView);
+        }
+        for (String s : carnetEnCours.getListePhotos()){
+            image = BitmapFactory.decodeFile(s);
+            ImageView imageView = new ImageView(getApplicationContext());
+            imageView.setImageBitmap(image);
+            monLayout.addView(imageView);
+        }
     }
 
 
@@ -233,8 +261,11 @@ public class CarnetActivity extends AppCompatActivity {
 
         }
 
+        gestionnaire.getLesCarnets().set(positon, carnetEnCours);
         Log.d("CARNET",carnetEnCours.getListePhotos().toString());
         Log.d("CARNET",carnetEnCours.getListeTextes().toString());
+        Serialize.serialize(getApplicationContext(),gestionnaire);
+
 
     }
 
@@ -293,6 +324,8 @@ public class CarnetActivity extends AppCompatActivity {
 
         }
     }
+
+
 
 
 }

@@ -20,6 +20,7 @@ import java.util.List;
 import fr.iut.projet.R;
 import fr.iut.projet.model.Carnet;
 import fr.iut.projet.model.GestionnaireCarnet;
+import fr.iut.projet.view.Serialize.Serialize;
 import fr.iut.projet.view.activities.CarnetActivity;
 import fr.iut.projet.view.activities.MainActivity;
 import fr.iut.projet.view.adapter.Adaptateur;
@@ -55,6 +56,7 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
 
     private void init(View v) {
         //Mise en place de la RecyclerView
+        this.monGestionnaire=Serialize.deSerialize(getContext());
         RecyclerView laListView = v.findViewById(R.id.liste_view);
         laListView.setHasFixedSize(true);
         laListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -68,11 +70,13 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
          //supprimer le carnet courant
          this.monGestionnaire=getCarnets();
          Log.d("TOTO","Suppression du carnet n° :"+position);
-         this.monGestionnaire.supprimerCarnet(position);
+         this.monGestionnaire.getLesCarnets().remove(position);
 
-         //On rapelle l'activité pour actualiser
-         Intent monIntent=new Intent(getActivity(), MainActivity.class);
-         startActivity(monIntent);
+         //Serialize.serialize(getContext(),getCarnets());
+
+         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.afficheurfragment,new LogsFragment(), null)
+                 .commit();
+
      }
 
     public void creationListe(){
