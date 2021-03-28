@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements IGestionnaireCarn
         }
         else{
             Log.d("SERIALIZE","on déserialise la gestionnaire de carnet");
-            manager = Serialize.deSerialize(getApplicationContext(),manager);
+            manager = Serialize.deSerialize(getApplicationContext());
         }
         if(manager == null){
             Log.d("SERIALIZE","on utilise le stub pour charger les données");
