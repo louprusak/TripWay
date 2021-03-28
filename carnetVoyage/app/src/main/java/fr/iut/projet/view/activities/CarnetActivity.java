@@ -58,8 +58,8 @@ public class CarnetActivity extends AppCompatActivity {
     private GestionnaireCarnet gestionnaire;
 
     //position des éléments
-    int positionTextView=100;
-    int positionImageView=100;
+    int positionTextView=2000;
+    int positionImageView=2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -209,17 +209,19 @@ public class CarnetActivity extends AppCompatActivity {
         //INTENT DU TEXTE (result_canceled car on retourne à l'activité où il y a le carnet, pas une nouvelle)
         if(requestCode==RETOUR_TEXTE && resultCode==RESULT_CANCELED){
             String texte = data.getStringExtra(AddTextActivity.KEY_DONNEE);
-            //ajout du texte dans le carnet
-            carnetEnCours.addTexte(texte);
-            //création et positionnement de la textView associée à ce texte
-            positionTextView-=200;
-            TextView textView = new TextView(getApplicationContext());
-            textView.setText(texte);
-            textView.setTranslationY(positionTextView);
-            textView.setTranslationX(50);
-            textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-            textView.setBackgroundResource(R.drawable.bordure_textview);
-            monLayout.addView(textView);
+            if(texte!=null) {
+                //ajout du texte dans le carnet
+                carnetEnCours.addTexte(texte);
+                //création et positionnement de la textView associée à ce texte
+                positionTextView -= 200;
+                TextView textView = new TextView(getApplicationContext());
+                textView.setText(texte);
+                textView.setTranslationY(positionTextView);
+                textView.setTranslationX(50);
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                textView.setBackgroundResource(R.drawable.bordure_textview);
+                monLayout.addView(textView);
+            }
 
         }
 
