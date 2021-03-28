@@ -15,6 +15,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,7 +51,7 @@ public class CarnetActivity extends AppCompatActivity {
     private Button btnTexte;
     private String photoPath = null;
     private Bitmap image;
-    private ConstraintLayout monLayout;
+    private LinearLayout monLayout;
 
     //Le carnet en cours
     private Carnet carnet;
@@ -58,8 +59,8 @@ public class CarnetActivity extends AppCompatActivity {
     private GestionnaireCarnet gestionnaire;
 
     //position des éléments
-    int positionTextView=2000;
-    int positionImageView=2000;
+    int positionTextView=100;
+    int positionImageView=100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +124,7 @@ public class CarnetActivity extends AppCompatActivity {
         btnTexte=(Button)findViewById(R.id.btnTexte);
         maTexteView=(TextView)findViewById(R.id.texte_anecdote);
         maTitreView=(TextView)findViewById(R.id.titre_view);
-        monLayout=(ConstraintLayout)findViewById(R.id.layout);
+        monLayout=(LinearLayout) findViewById(R.id.layout);
 
         //initialisation des clics sur les boutons
         createOnClicGalerie();
