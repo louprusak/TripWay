@@ -15,6 +15,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,7 +51,7 @@ public class CarnetActivity extends AppCompatActivity {
     private Button btnTexte;
     private String photoPath = null;
     private Bitmap image;
-    private ConstraintLayout monLayout;
+    private LinearLayout monLayout;
 
     //Le carnet en cours
     private Carnet carnet;
@@ -60,6 +61,8 @@ public class CarnetActivity extends AppCompatActivity {
     //position des éléments
     int positionTextView=100;
     int positionImageView=100;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,7 +126,7 @@ public class CarnetActivity extends AppCompatActivity {
         btnTexte=(Button)findViewById(R.id.btnTexte);
         maTexteView=(TextView)findViewById(R.id.texte_anecdote);
         maTitreView=(TextView)findViewById(R.id.titre_view);
-        monLayout=(ConstraintLayout)findViewById(R.id.layout);
+        monLayout=(LinearLayout) findViewById(R.id.layout_content);
 
         //initialisation des clics sur les boutons
         createOnClicGalerie();
@@ -183,9 +186,9 @@ public class CarnetActivity extends AppCompatActivity {
             //Création, redimensionnement et positionnement de l'imageView
             ImageView imageView = new ImageView(getApplicationContext());
             imageView.setImageBitmap(image);
-            positionImageView-=510;
-            imageView.setTranslationY(positionImageView);
-            imageView.setTranslationX(500);
+            //positionImageView-=510;
+            //imageView.setTranslationY(positionImageView);
+            //imageView.setTranslationX(500);
             int height= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
             int width= (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 150, imgPhoto.getContext().getResources().getDisplayMetrics());
             monLayout.addView(imageView, new ConstraintLayout.LayoutParams(width,height));
@@ -215,8 +218,8 @@ public class CarnetActivity extends AppCompatActivity {
             positionTextView-=200;
             TextView textView = new TextView(getApplicationContext());
             textView.setText(texte);
-            textView.setTranslationY(positionTextView);
-            textView.setTranslationX(50);
+            //textView.setTranslationY(positionTextView);
+           // textView.setTranslationX(50);
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
             textView.setBackgroundResource(R.drawable.bordure_textview);
             monLayout.addView(textView);
