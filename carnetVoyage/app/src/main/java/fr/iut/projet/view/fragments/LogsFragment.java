@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,15 +33,11 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
     private GestionnaireCarnet monGestionnaire;
     private Carnet carnetEnCours;
 
+
     static final String lecarnet="moncarnet";
     static final String legestionnaire="gestionnaire";
 
     ArrayList<CarnetItem> listeCarnets = new ArrayList<>();
-
-
-
-
-
 
 
     public LogsFragment() {
@@ -56,10 +53,15 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
 
 
     private void init(View v) {
+        //Mise en place de la RecyclerView
         RecyclerView laListView = v.findViewById(R.id.liste_view);
         laListView.setHasFixedSize(true);
         laListView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         laListView.setAdapter(new Adaptateur(listeCarnets, this));
+
+        //Récupération éléments graphiques
+
+
     }
 
     public void creationListe(){
@@ -70,10 +72,13 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
 
     @Override
     public void onMonclik(int position) {
-        GestionnaireCarnet monGestionnaire= getCarnets();
+        this.monGestionnaire= getCarnets();
 
         ArrayList<Carnet> laListe = monGestionnaire.getLesCarnets();
         carnetEnCours=laListe.get(position);
+
+        Log.d("TOTO","Je passe ici");
+
 
         //On passe à l'activité suivante
         Intent monIntent=new Intent(getActivity(), CarnetActivity.class);
@@ -90,4 +95,5 @@ public class LogsFragment extends Fragment implements ViewHolder.MonClickListene
         }
         return null; // faire attention de tester le résultat null
     }
+
 }
