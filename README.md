@@ -1,6 +1,8 @@
 # TripWay
 Tripway is a very powerfull android application wich give the possibility to users to create their travel diary.
 
+(No data save)
+
 ### Description (French)
 
 Notre application a pour but de donner la possibilité aux utilisateurs de créer leur carnet
