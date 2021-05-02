@@ -26,14 +26,14 @@ You will find all the documentation of this project in the **documentation** fol
 ### Visuals
 
 **Home page :**
-![](Documentation/home.jpg)
+![](Documentation/home.jpg =100)
 
 **Map page :**
-![](Documentation/home.jpg)
+![](Documentation/home.jpg =100)
 
 **List page :**
-![](Documentation/home.jpg)
+![](Documentation/home.jpg =100)
 
 **Create page :**
-![](Documentation/home.jpg)
+![](Documentation/home.jpg =100)
 
