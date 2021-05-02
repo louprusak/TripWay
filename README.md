@@ -29,11 +29,11 @@ You will find all the documentation of this project in the **documentation** fol
 ![](documentation/home.jpg)
 
 **Map page :**
-![](documentation/home.png)
+![](documentation/home.jpg)
 
 **List page :**
-![](documentation/home.png)
+![](documentation/home.jpg)
 
 **Create page :**
-![](documentation/home.png)
+![](documentation/home.jpg)
 
