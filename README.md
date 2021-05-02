@@ -26,28 +26,14 @@ You will find all the documentation of this project in the **documentation** fol
 ### Visuals
 
 **Home page :**
-![](trunk/doc/home.png)
+![](documentation/home.jpg)
 
-**EDT page :**
-![](trunk/doc/edt.png)
+**Map page :**
+![](documentation/home.png)
 
-**Notes page :**
-![](trunk/doc/notes1.png)
+**List page :**
+![](documentation/home.png)
 
-**Note detail page :**
-![](trunk/doc/notes2.png)
+**Create page :**
+![](documentation/home.png)
 
-**ToDo Lists page :**
-![](trunk/doc/todolists.png)
-
-**Add note pop up :**
-
-![](trunk/doc/addnote.png)
-
-**Add task pop up :**
-
-![](trunk/doc/addtask.png)
-
-**Add todolist pop up :**
-
-![](trunk/doc/addtodolist.png)
